@@ -31,9 +31,21 @@ public class PauseManager : MonoBehaviour
         GameManager.Instance.SetGamePaused(false);
     }
 
+    public void onSaveButtonPressed()
+    {
+        //TO DO
+        Debug.Log("Save");
+    }
+
+    public void onLoadButtonPressed()
+    {
+        //TO DO
+        Debug.Log("Load");
+    }
+
     public void onQuitButtonPressed()
     {
-        GameManager.Instance.SetGamePaused(true);
+        GameManager.Instance.SetGamePaused(false);
         SceneManager.LoadScene(GameManager.Instance.LEVEL_NAME_MAIN_MENU);
     }
 }

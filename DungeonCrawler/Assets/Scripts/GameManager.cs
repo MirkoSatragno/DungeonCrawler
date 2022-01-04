@@ -10,9 +10,17 @@ public class GameManager : MonoBehaviour
         get { return _instance; }
     }
 
+    [HideInInspector]
     public string LEVEL_NAME_MAIN_MENU = "MainMenu";
+    [HideInInspector]
     public string LEVEL_NAME_LEVEL_1 = "Level1";
+    [HideInInspector]
     public string LEVEL_NAME_LEVEL_2 = "Level2";
+
+    [HideInInspector]
+    public string TAG_PLAYER = "Player";
+    [HideInInspector]
+    public string TAG_VISUAL_EFFECT = "VisualEffect";
 
     private bool _isGamePaused;
     public bool IsGamePaused

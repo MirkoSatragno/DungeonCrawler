@@ -3,7 +3,8 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - VisualEffect
   layers:
   - Default
   - TransparentFX
@@ -40,6 +41,15 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Behind Characters
+    uniqueID: 99653745
+    locked: 0
+  - name: Characters
+    uniqueID: 1545105579
+    locked: 0
+  - name: Over Characters
+    uniqueID: 3866729139
     locked: 0
   - name: UI
     uniqueID: 539056895

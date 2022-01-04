@@ -1,0 +1,303 @@
+fileFormatVersion: 2
+guid: 3e1acac7742004943a735b053aa4f9c8
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 5657564789628996334
+    second: TurnCircle_0
+  - first:
+      213: 4475185319343180682
+    second: TurnCircle_1
+  - first:
+      213: 51143018051597254
+    second: TurnCircle_2
+  - first:
+      213: -335152494244092275
+    second: TurnCircle_3
+  - first:
+      213: 6101508833623358997
+    second: TurnCircle_4
+  - first:
+      213: -4695529919482084489
+    second: TurnCircle_5
+  - first:
+      213: 3441014069987164663
+    second: TurnCircle_6
+  - first:
+      213: 2723992424112626358
+    second: TurnCircle_7
+  - first:
+      213: 1124351545471501617
+    second: TurnCircle_8
+  - first:
+      213: 647573010647513277
+    second: TurnCircle_9
+  - first:
+      213: 7576646728669110634
+    second: TurnCircle_10
+  - first:
+      213: -3195821493129523822
+    second: TurnCircle_11
+  - first:
+      213: -1680642374424559401
+    second: TurnCircle_12
+  - first:
+      213: 8859071800718182198
+    second: TurnCircle_13
+  - first:
+      213: 683719171648956450
+    second: TurnCircle_14
+  - first:
+      213: -5759260342846643136
+    second: TurnCircle_15
+  - first:
+      213: 4949008866888458336
+    second: TurnCircle_16
+  - first:
+      213: -1072611181892603119
+    second: TurnCircle_17
+  - first:
+      213: -7984436568599396007
+    second: TurnCircle_18
+  - first:
+      213: -4085362724007173356
+    second: TurnCircle_19
+  - first:
+      213: 3147110794806845528
+    second: TurnCircle_20
+  - first:
+      213: -8301028280143012745
+    second: TurnCircle_21
+  - first:
+      213: -8211897820586032347
+    second: TurnCircle_22
+  - first:
+      213: -1388461385138326922
+    second: TurnCircle_23
+  - first:
+      213: -7827158203462871711
+    second: TurnCircle_24
+  - first:
+      213: 6685264429695486511
+    second: TurnCircle_25
+  - first:
+      213: -7190049236441806251
+    second: TurnCircle_26
+  - first:
+      213: 5566634814160620215
+    second: TurnCircle_27
+  - first:
+      213: 3115692321035635602
+    second: TurnCircle_28
+  - first:
+      213: 5296249583688948841
+    second: TurnCircle_29
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 128
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: TurnCircle_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 960
+        width: 192
+        height: 192
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eea089b7335b38e40800000000000000
+      internalID: 5657564789628996334
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TurnCircle_1
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 960
+        width: 192
+        height: 192
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a8b4e7f565d0b1e30800000000000000
+      internalID: 4475185319343180682
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TurnCircle_2
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 960
+        width: 192
+        height: 192
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6c3f4bfcd42b5b000800000000000000
+      internalID: 51143018051597254
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TurnCircle_3
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 960
+        width: 192
+        height: 192
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d86aefa059c495bf0800000000000000
+      internalID: -335152494244092275
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TurnCircle_4
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 960
+        width: 192
+        height: 192
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 51e370ef4f9eca450800000000000000
+      internalID: 6101508833623358997
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
