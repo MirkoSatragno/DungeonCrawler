@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4474843235788124318}
   - component: {fileID: 6790092080292810676}
   - component: {fileID: 3022566049946879227}
+  - component: {fileID: 4040248323206968602}
   m_Layer: 0
   m_Name: Zombie
   m_TagString: Untagged
@@ -99,8 +100,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _attackStat: 3
   _defenseStat: 3
-  _maxStaminaStat: 3
+  _maxStaminaStat: 5
   turnCircle: {fileID: 8112301603994721194}
+  AttackEffect: {fileID: 2236314420931324022, guid: 4cc7fd10f3a476a419a7ae438157036a, type: 3}
 --- !u!61 &3022566049946879227
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -127,6 +129,25 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!95 &4040248323206968602
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1980780945743811854}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 31f0e6c100af2fd439357d2d54d1ea26, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &5506946505525024596
 PrefabInstance:
   m_ObjectHideFlags: 0

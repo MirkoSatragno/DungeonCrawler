@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1239827221379619337}
   - component: {fileID: 548916300327392736}
   - component: {fileID: 2398014530770058337}
+  - component: {fileID: 3923654750974552190}
   m_Layer: 0
   m_Name: Chewie
   m_TagString: Untagged
@@ -101,6 +102,7 @@ MonoBehaviour:
   _defenseStat: 5
   _maxStaminaStat: 10
   turnCircle: {fileID: 3247952378604209607}
+  AttackEffect: {fileID: 2236314420931324022, guid: 4cc7fd10f3a476a419a7ae438157036a, type: 3}
 --- !u!61 &2398014530770058337
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -127,6 +129,25 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2, y: 2}
   m_EdgeRadius: 0
+--- !u!95 &3923654750974552190
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1239827221379619336}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b28c8cb71c0e0184eb3602feb9156da2, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &1291194447649622329
 PrefabInstance:
   m_ObjectHideFlags: 0

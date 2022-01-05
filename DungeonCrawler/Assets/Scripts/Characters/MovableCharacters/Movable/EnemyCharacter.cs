@@ -13,19 +13,18 @@ public class EnemyCharacter : MovableCharacter
     // Update is called once per frame
     void Update()
     {
-        if (IsMyTurn() && turnUiLoaded && Input.GetMouseButtonDown(0))
+        if (IsMyTurn() && CurrentState == CharacterState.Idle && Input.GetMouseButtonDown(0))
         {
-            EndMyTurn();
+            StartCoroutine("EndMyTurn");
         }
     }
 
     public override IEnumerator PlayTurn()
     {
-        Debug.Log(this.name + "'s turn");
         StartCoroutine("SetupStartingTurnUI");
 
-        yield return new WaitForSeconds(1);
-        turnUiLoaded = true;
+        yield return new WaitForSeconds(preTurnWait);
+        CurrentState = CharacterState.Idle;
 
         Character player = FindPlayerAround();
         if (player)
@@ -36,7 +35,8 @@ public class EnemyCharacter : MovableCharacter
         }
         else
         {
-            Debug.Log("Enemy wants to move");
+            //Debug.Log("Enemy wants to move");
+            //Se non trovi un player entro un certo raggio, fallo muovere a caso
         }
 
         

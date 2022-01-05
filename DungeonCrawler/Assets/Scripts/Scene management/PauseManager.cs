@@ -46,6 +46,6 @@ public class PauseManager : MonoBehaviour
     public void onQuitButtonPressed()
     {
         GameManager.Instance.SetGamePaused(false);
-        SceneManager.LoadScene(GameManager.Instance.LEVEL_NAME_MAIN_MENU);
+        SceneManager.LoadScene(GameManager.LEVEL_NAME_MAIN_MENU);
     }
 }

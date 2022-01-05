@@ -11,16 +11,16 @@ public class GameManager : MonoBehaviour
     }
 
     [HideInInspector]
-    public string LEVEL_NAME_MAIN_MENU = "MainMenu";
+    public const string LEVEL_NAME_MAIN_MENU = "MainMenu";
     [HideInInspector]
-    public string LEVEL_NAME_LEVEL_1 = "Level1";
+    public const string LEVEL_NAME_LEVEL_1 = "Level1";
     [HideInInspector]
-    public string LEVEL_NAME_LEVEL_2 = "Level2";
+    public const string LEVEL_NAME_LEVEL_2 = "Level2";
 
     [HideInInspector]
-    public string TAG_PLAYER = "Player";
+    public const string TAG_PLAYER = "Player";
     [HideInInspector]
-    public string TAG_VISUAL_EFFECT = "VisualEffect";
+    public const string TAG_VISUAL_EFFECT = "VisualEffect";
 
     private bool _isGamePaused;
     public bool IsGamePaused

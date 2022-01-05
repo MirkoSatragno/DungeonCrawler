@@ -13,23 +13,19 @@ public class PlayerCharacter : MovableCharacter
     // Update is called once per frame
     void Update()
     {
-        if (IsMyTurn() && turnUiLoaded && Input.GetMouseButtonDown(0))
+        if (IsMyTurn() && CurrentState == CharacterState.Idle && Input.GetMouseButtonDown(0))
         {
-            EndMyTurn();
+            StartCoroutine("EndMyTurn");
         }
     }
 
     public override IEnumerator PlayTurn()
     {
-        Debug.Log(this.name + "'s turn");
         StartCoroutine("SetupStartingTurnUI");
 
         //TO DO remove the wait
-        yield return new WaitForSeconds(1);
-        turnUiLoaded = true;
-
-        
-        Debug.Log("Player wants to move");
+        yield return new WaitForSeconds(preTurnWait);
+        CurrentState = CharacterState.Idle;
 
     }
     

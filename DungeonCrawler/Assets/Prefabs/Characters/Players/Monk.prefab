@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 5071695686014323210}
   - component: {fileID: 38230056064943398}
   - component: {fileID: 7103615232556026997}
+  - component: {fileID: 8748481121382851587}
   m_Layer: 0
   m_Name: Monk
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -123,10 +124,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b684532f45a25a34fab77be2a7f50027, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _attackStat: 5
-  _defenseStat: 0
-  _maxStaminaStat: 0
+  _attackStat: 4
+  _defenseStat: 4
+  _maxStaminaStat: 10
   turnCircle: {fileID: 3786851272465689222}
+  AttackEffect: {fileID: 2236314420931324022, guid: 4cc7fd10f3a476a419a7ae438157036a, type: 3}
+--- !u!95 &8748481121382851587
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5071695686014323211}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 288d1d2856fafe141af41e424740a3b5, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &609583349946099320
 PrefabInstance:
   m_ObjectHideFlags: 0

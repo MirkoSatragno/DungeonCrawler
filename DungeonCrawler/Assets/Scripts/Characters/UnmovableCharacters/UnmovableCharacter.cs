@@ -10,33 +10,24 @@ public class UnmovableCharacter : Character
         
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        if(IsMyTurn() && turnUiLoaded && Input.GetMouseButtonDown(0))
-        {
-            EndMyTurn();
-        }
-            
-    }
 
     public override IEnumerator PlayTurn()
     {
-        Debug.Log(this.name + "'s turn");
         StartCoroutine("SetupStartingTurnUI");
 
-        //TODO if he can't attack he shouldn't wait
-        yield return new WaitForSeconds(1);
-        turnUiLoaded = true;
+        yield return new WaitForSeconds(preTurnWait);
+        CurrentState = CharacterState.Idle;
 
         Character player = FindPlayerAround();
         if (player)
         {
+            
             Attack(player);
-
-            yield return new WaitForSeconds(1);
         }
-
+        else
+        {
+            StartCoroutine("EndMyTurn");
+        }
         
     }
 

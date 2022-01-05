@@ -19,13 +19,13 @@ public class MainMenu : MonoBehaviour
 
     public void onLevel1ButtonPushed()
     {
-        SceneManager.LoadScene(GameManager.Instance.LEVEL_NAME_LEVEL_1);
+        SceneManager.LoadScene(GameManager.LEVEL_NAME_LEVEL_1);
     }
 
     public void onLevel2ButtonPushed()
     {
         Debug.Log("Button 2");
-        SceneManager.LoadScene(GameManager.Instance.LEVEL_NAME_LEVEL_2);
+        SceneManager.LoadScene(GameManager.LEVEL_NAME_LEVEL_2);
     }
 
     public void onExitButtonPushed()
