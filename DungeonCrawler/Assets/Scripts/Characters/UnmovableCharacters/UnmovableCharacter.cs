@@ -18,16 +18,11 @@ public class UnmovableCharacter : Character
         yield return new WaitForSeconds(preTurnWait);
         CurrentState = CharacterState.Idle;
 
-        Character player = FindPlayerAround();
-        if (player)
-        {
-            
-            Attack(player);
-        }
+        attackedCharacter = FindPlayerAround();
+        if (attackedCharacter)
+            Attack(attackedCharacter);
         else
-        {
             StartCoroutine("EndMyTurn");
-        }
         
     }
 

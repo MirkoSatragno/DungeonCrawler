@@ -32,6 +32,8 @@ public class Character : MonoBehaviour
     protected float preTurnWait = 1f;
     [SerializeField]
     protected float postTurnWait = 1f;
+    [SerializeField]
+    protected float disappearingDuration = 2;
 
     protected const string ANIMATOR_PARAMETER_SPEED_NAME = "Speed";
     protected const float ANIMATOR_PARAMETER_SPEED_SLOW = 0.1f;
@@ -51,6 +53,11 @@ public class Character : MonoBehaviour
 
 
     protected Animator animator;
+    protected BoxCollider2D boxCollider;
+    protected HealthBar healthBar;
+    protected SpriteRenderer sprite;
+
+
 
     private int _characterId;
     public int CharacterId
@@ -59,15 +66,12 @@ public class Character : MonoBehaviour
         set { _characterId = value; }
     }
     private int _stamina;
-    public int Stamina
+    protected int Stamina
     {
         get { return _stamina; }
+        set { _stamina = value; }
     }
-    protected bool _isMovable;
-    public bool IsMovable
-    {
-        get { return _isMovable; }
-    }
+    
 
     public enum CharacterState
     {
@@ -84,7 +88,10 @@ public class Character : MonoBehaviour
         get { return _currentState; }
         set { _currentState = value; }
     }
-    protected BoxCollider2D boxCollider;
+
+    protected Character attackedCharacter;
+
+    
 
 
 
@@ -102,13 +109,21 @@ public class Character : MonoBehaviour
         boxCollider = GetComponent<BoxCollider2D>();
         Debug.Assert(boxCollider, "Character: boxCollider component not found");
 
+        healthBar = GetComponentInChildren<HealthBar>();
+        Debug.Assert(healthBar, "Character: HealthBar child not found");
+
         animator = GetComponent<Animator>();
         Debug.Assert(animator, "Character: animator component not found");
         animator.SetFloat(ANIMATOR_PARAMETER_SPEED_NAME, ANIMATOR_PARAMETER_SPEED_SLOW);
 
-        
+        sprite = GetComponent<SpriteRenderer>();
+        Debug.Assert(sprite, "Character: spriteRenderer component not found");
 
+
+
+        Stamina = MaxStaminaStat;
         CurrentState = CharacterState.Spectating;
+        attackedCharacter = null;
     }
 
     private void OnEnable()
@@ -136,10 +151,14 @@ public class Character : MonoBehaviour
 
 
 
+
     public void SetStamina(int stamina)
     {
-        _stamina = stamina;
-        //TODO some checks
+        Stamina = Mathf.Max(0, stamina);
+        healthBar.SetHealthBar((float)stamina / (float)MaxStaminaStat);
+
+        if (Stamina == 0)
+            Die();
     }
 
     protected bool IsMyTurn()
@@ -244,7 +263,7 @@ public class Character : MonoBehaviour
         
         yield return new WaitForSeconds(AttackDuration);
 
-        int damage = Mathf.Min(1, attacker.AttackStat / DefenseStat);
+        int damage = Mathf.Max(1, attacker.AttackStat / DefenseStat);
         SetStamina(Stamina - damage);
     }
 
@@ -260,7 +279,11 @@ public class Character : MonoBehaviour
 
     virtual public IEnumerator EndMyTurn()
     {
+        //better wait before the possible death wait, to be sure the player has already entered dieing state
         yield return new WaitForSeconds(postTurnWait);
+
+        if (attackedCharacter && attackedCharacter.CurrentState == CharacterState.Dieing)
+            yield return new WaitForSeconds(attackedCharacter.disappearingDuration);
         
         DisableTurnUI();
         TurnManager.EndTurn(CharacterId);
@@ -271,4 +294,6 @@ public class Character : MonoBehaviour
         turnCircle.SetActive(false);
         CurrentState = CharacterState.Spectating;
     }
+
+    virtual protected void Die() { Debug.Log(name + ": implement a proper death"); }
 }

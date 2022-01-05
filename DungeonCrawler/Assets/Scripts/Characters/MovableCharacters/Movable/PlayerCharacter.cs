@@ -17,6 +17,20 @@ public class PlayerCharacter : MovableCharacter
         {
             StartCoroutine("EndMyTurn");
         }
+
+        if(CurrentState == CharacterState.Dieing)
+        {
+            Color spriteColor = sprite.color;
+            spriteColor.a =  Mathf.Max(0f, spriteColor.a - Time.deltaTime / disappearingDuration);
+            sprite.color = spriteColor;
+
+            if (spriteColor.a == 0)
+            {
+                Debug.Log("PUFF");
+                Destroy(gameObject);
+            }
+                
+        }
     }
 
     public override IEnumerator PlayTurn()
@@ -34,5 +48,12 @@ public class PlayerCharacter : MovableCharacter
         turnCircle.SetActive(true);
 
         Debug.Log("Player needs additional UI");
+    }
+
+    override protected void Die() 
+    {
+        CurrentState = CharacterState.Dieing;
+
+        LevelManager.Instance.RemoveCharacter(CharacterId);
     }
 }

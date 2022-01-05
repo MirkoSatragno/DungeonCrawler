@@ -142,4 +142,12 @@ public class LevelManager : MonoBehaviour
 
         spawnedPlayer.transform.position = startingPosition3;
     }
+
+    public void RemoveCharacter(int characterId)
+    {
+        Debug.Assert(activeCharactersMap.ContainsKey(characterId), "LevelManager: character to be removed not found");
+
+        activeCharactersMap.Remove(characterId);
+        //can't remove from turnQueue because it's not random access
+    }
 }
