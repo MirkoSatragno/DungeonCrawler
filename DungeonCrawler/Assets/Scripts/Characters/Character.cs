@@ -183,26 +183,26 @@ public class Character : MonoBehaviour
 
         string playerTag = GameManager.TAG_PLAYER;
 
-        result = FindTaggedCharacterAtPosition(playerTag, transform.position + Vector3.down);
+        result = CheckTaggedCharacterAtPosition(playerTag, transform.position + Vector3.down);
         if (result && result.CompareTag(GameManager.TAG_PLAYER))
             return result;
 
-        result = FindTaggedCharacterAtPosition(playerTag, transform.position + Vector3.left);
+        result = CheckTaggedCharacterAtPosition(playerTag, transform.position + Vector3.left);
         if (result && result.CompareTag(GameManager.TAG_PLAYER))
             return result;
 
-        result = FindTaggedCharacterAtPosition(playerTag, transform.position + Vector3.up);
+        result = CheckTaggedCharacterAtPosition(playerTag, transform.position + Vector3.up);
         if (result && result.CompareTag(GameManager.TAG_PLAYER))
             return result;
 
-        result = FindTaggedCharacterAtPosition(playerTag, transform.position + Vector3.right);
+        result = CheckTaggedCharacterAtPosition(playerTag, transform.position + Vector3.right);
         if (result && result.CompareTag(GameManager.TAG_PLAYER))
             return result;
 
         return null;
     }
 
-    protected Character FindTaggedCharacterAtPosition(string TAG, Vector3 location)
+    protected Character CheckTaggedCharacterAtPosition(string TAG, Vector3 location)
     {
         //I don't want to detect a collision on the extreme limit of a collider
         float boundaryCorrection = 0.9f;
@@ -214,10 +214,7 @@ public class Character : MonoBehaviour
 
         foreach(Collider2D coll in colliders)
             if (coll.CompareTag(TAG))
-            {
                 return coll.gameObject.GetComponent<Character>();
-            }
-                
 
 
         return null;

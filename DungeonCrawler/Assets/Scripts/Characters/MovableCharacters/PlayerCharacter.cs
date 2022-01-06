@@ -25,10 +25,7 @@ public class PlayerCharacter : MovableCharacter
             sprite.color = spriteColor;
 
             if (spriteColor.a == 0)
-            {
-                Debug.Log("PUFF");
                 Destroy(gameObject);
-            }
                 
         }
     }
