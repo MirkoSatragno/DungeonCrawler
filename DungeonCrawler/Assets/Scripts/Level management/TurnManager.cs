@@ -40,13 +40,13 @@ public class TurnManager : MonoBehaviour
         Debug.Assert(turnQueue.Count != 0, "TurnManager: accessing empty turnQueue");
         
         int characterId = turnQueue.Dequeue();
-        Character extractedChar = levelManager.GetActiveCharacter(characterId);
+        Character extractedChar = levelManager.GetCharacter(characterId);
 
         while(extractedChar == null)
         {
             Debug.Assert(turnQueue.Count != 0, "TurnManager: accessing empty turnQueue");
             characterId = turnQueue.Dequeue();
-            extractedChar = levelManager.GetActiveCharacter(characterId);
+            extractedChar = levelManager.GetCharacter(characterId);
         }
 
         return extractedChar;
@@ -57,14 +57,14 @@ public class TurnManager : MonoBehaviour
         Debug.Assert(turnQueue.Count != 0, "TurnManager: accessing empty turnQueue");
 
         int characterId = turnQueue.Peek();
-        Character activeChar = levelManager.GetActiveCharacter(characterId);
+        Character activeChar = levelManager.GetCharacter(characterId);
 
         while (activeChar == null)
         {
             turnQueue.Dequeue();
             Debug.Assert(turnQueue.Count != 0, "TurnManager: accessing empty turnQueue");
             characterId = turnQueue.Peek();
-            activeChar = levelManager.GetActiveCharacter(characterId);
+            activeChar = levelManager.GetCharacter(characterId);
         }
 
         return characterId;
@@ -73,7 +73,7 @@ public class TurnManager : MonoBehaviour
     public void StartNewTurn()
     {
         int characterId = ActiveCharacterIdCurrentTurn();
-        Character currentCharacter = levelManager.GetActiveCharacter(characterId);
+        Character currentCharacter = levelManager.GetCharacter(characterId);
 
         currentCharacter.PlayTurn();
         IEnumerator coroutine = currentCharacter.PlayTurn();

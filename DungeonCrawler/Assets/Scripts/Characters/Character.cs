@@ -28,9 +28,9 @@ public class Character : MonoBehaviour
     [SerializeReference]
     protected SpecialEffect AttackEffect;
 
-    [SerializeField]
+    [SerializeField, Range(0.5f, 10f)]
     protected float preTurnWait = 1f;
-    [SerializeField]
+    [SerializeField, Range(0.5f, 10f)]
     protected float postTurnWait = 1f;
     [SerializeField]
     protected float disappearingDuration = 2;
@@ -86,7 +86,9 @@ public class Character : MonoBehaviour
     public CharacterState CurrentState
     {
         get { return _currentState; }
-        set { _currentState = value; }
+        set { _currentState = value;
+            //Debug.Log("Now I'm" + value);
+        }
     }
 
     protected Character attackedCharacter;
@@ -98,7 +100,7 @@ public class Character : MonoBehaviour
 
 
 
-    private void Awake()
+    virtual protected void Awake()
     {
         Debug.Assert(turnCircle, "Character: turnCircle not found");
         Debug.Assert(turnCircle.CompareTag(GameManager.TAG_VISUAL_EFFECT), "Character: turnCircle not found");
@@ -183,26 +185,26 @@ public class Character : MonoBehaviour
 
         string playerTag = GameManager.TAG_PLAYER;
 
-        result = CheckTaggedCharacterAtPosition(playerTag, transform.position + Vector3.down);
-        if (result && result.CompareTag(GameManager.TAG_PLAYER))
+        result = GetTaggedCharacterAtNearPosition(playerTag, transform.position + Vector3.down);
+        if (result)
             return result;
 
-        result = CheckTaggedCharacterAtPosition(playerTag, transform.position + Vector3.left);
-        if (result && result.CompareTag(GameManager.TAG_PLAYER))
+        result = GetTaggedCharacterAtNearPosition(playerTag, transform.position + Vector3.left);
+        if (result)
             return result;
 
-        result = CheckTaggedCharacterAtPosition(playerTag, transform.position + Vector3.up);
-        if (result && result.CompareTag(GameManager.TAG_PLAYER))
+        result = GetTaggedCharacterAtNearPosition(playerTag, transform.position + Vector3.up);
+        if (result)
             return result;
 
-        result = CheckTaggedCharacterAtPosition(playerTag, transform.position + Vector3.right);
-        if (result && result.CompareTag(GameManager.TAG_PLAYER))
+        result = GetTaggedCharacterAtNearPosition(playerTag, transform.position + Vector3.right);
+        if (result)
             return result;
 
         return null;
     }
 
-    protected Character CheckTaggedCharacterAtPosition(string TAG, Vector3 location)
+    protected Character GetTaggedCharacterAtNearPosition(string TAG, Vector3 location)
     {
         //I don't want to detect a collision on the extreme limit of a collider
         float boundaryCorrection = 0.9f;
@@ -223,7 +225,7 @@ public class Character : MonoBehaviour
     virtual protected void Attack(Character target) 
     {
         CurrentState = CharacterState.Attacking;
-        TurnToCharacter(target);
+        TurnToTarget(target.transform.position);
         animator.SetFloat(ANIMATOR_PARAMETER_SPEED_NAME, ANIMATOR_PARAMETER_SPEED_FAST);
 
         SpecialEffect spawnedEffect = Instantiate(AttackEffect);
@@ -234,9 +236,9 @@ public class Character : MonoBehaviour
         StartCoroutine(coroutine);
     }
 
-    protected void TurnToCharacter(Character target)
+    protected void TurnToTarget(Vector3 target)
     {
-        Vector3 direction = target.transform.position - transform.position;
+        Vector3 direction = target - transform.position;
 
         if(Mathf.Abs(direction.y) < Mathf.Abs(direction.x))
         {
@@ -256,7 +258,7 @@ public class Character : MonoBehaviour
 
     virtual protected IEnumerator ReceiveAttack(Character attacker, float AttackDuration)
     {
-        TurnToCharacter(attacker);
+        TurnToTarget(attacker.transform.position);
         
         yield return new WaitForSeconds(AttackDuration);
 
@@ -281,6 +283,7 @@ public class Character : MonoBehaviour
 
         if (attackedCharacter && attackedCharacter.CurrentState == CharacterState.Dieing)
             yield return new WaitForSeconds(attackedCharacter.disappearingDuration);
+
         
         DisableTurnUI();
         TurnManager.EndTurn(CharacterId);
@@ -292,5 +295,10 @@ public class Character : MonoBehaviour
         CurrentState = CharacterState.Spectating;
     }
 
-    virtual protected void Die() { Debug.Log(name + ": implement a proper death"); }
+    virtual protected void Die()
+    {
+        CurrentState = CharacterState.Dieing;
+
+        LevelManager.Instance.RemoveCharacter(CharacterId);
+    }
 }

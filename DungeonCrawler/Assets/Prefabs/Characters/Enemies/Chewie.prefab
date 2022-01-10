@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 3923654750974552190}
   m_Layer: 0
   m_Name: Chewie
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -74,7 +74,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1545105579
-  m_SortingLayer: 2
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 1768208390464988498, guid: 45f3ddb4b8b39b14a91a7f334ed433a1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -99,11 +99,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 038f14e0817b6af49a483fd9ffc72342, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _attackStat: 50
+  _attackStat: 5
   _defenseStat: 5
   _maxStaminaStat: 10
   turnCircle: {fileID: 3247952378604209607}
-  AttackEffect: {fileID: 2236314420931324022, guid: 4cc7fd10f3a476a419a7ae438157036a, type: 3}
+  AttackEffect: {fileID: -772568062035337642, guid: 4cc7fd10f3a476a419a7ae438157036a, type: 3}
   preTurnWait: 1
   postTurnWait: 1
   disappearingDuration: 2
@@ -189,11 +189,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 235926663500231508, guid: 3b59debefb9ecdd428dd80e0c4dff3c7, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 256
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 235926663500231508, guid: 3b59debefb9ecdd428dd80e0c4dff3c7, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 20
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 235926663500231508, guid: 3b59debefb9ecdd428dd80e0c4dff3c7, type: 3}
       propertyPath: m_LocalPosition.x
@@ -229,7 +229,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 235926663500231508, guid: 3b59debefb9ecdd428dd80e0c4dff3c7, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 1.155
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 235926663500231508, guid: 3b59debefb9ecdd428dd80e0c4dff3c7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -242,6 +242,10 @@ PrefabInstance:
     - target: {fileID: 235926663500231508, guid: 3b59debefb9ecdd428dd80e0c4dff3c7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2004100155829996935, guid: 3b59debefb9ecdd428dd80e0c4dff3c7, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5066105463741938657, guid: 3b59debefb9ecdd428dd80e0c4dff3c7, type: 3}
       propertyPath: m_Name
@@ -291,7 +295,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4961718070622743867, guid: 2bf2988505276084f867ea43178732a7, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.9
+      value: -0.8
       objectReference: {fileID: 0}
     - target: {fileID: 4961718070622743867, guid: 2bf2988505276084f867ea43178732a7, type: 3}
       propertyPath: m_LocalPosition.z

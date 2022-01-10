@@ -5,10 +5,8 @@ using UnityEngine;
 public class SpecialEffect : MonoBehaviour
 {
     
-    public void onEndAnimation()
+    virtual public void onEndAnimation()
     {
-        Character.EndAttack(LevelManager.Instance.turnManager.ActiveCharacterIdCurrentTurn());
-
         Destroy(this.gameObject);
     }
 }

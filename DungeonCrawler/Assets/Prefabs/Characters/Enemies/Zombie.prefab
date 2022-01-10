@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 4040248323206968602}
   m_Layer: 0
   m_Name: Zombie
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -74,7 +74,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1545105579
-  m_SortingLayer: 2
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: -2485871483528494817, guid: 06f5765d54eead04681733b661027e19, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -103,9 +103,13 @@ MonoBehaviour:
   _defenseStat: 3
   _maxStaminaStat: 5
   turnCircle: {fileID: 8112301603994721194}
-  AttackEffect: {fileID: 2236314420931324022, guid: 4cc7fd10f3a476a419a7ae438157036a, type: 3}
+  AttackEffect: {fileID: -772568062035337642, guid: 4cc7fd10f3a476a419a7ae438157036a, type: 3}
   preTurnWait: 1
   postTurnWait: 1
+  disappearingDuration: 2
+  movementDuration: 1
+  maxStartHuntingRadius: 30
+  maxPredictedWalkCost: 10
 --- !u!61 &3022566049946879227
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -188,11 +192,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 235926663500231508, guid: 3b59debefb9ecdd428dd80e0c4dff3c7, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 128
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 235926663500231508, guid: 3b59debefb9ecdd428dd80e0c4dff3c7, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 20
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 235926663500231508, guid: 3b59debefb9ecdd428dd80e0c4dff3c7, type: 3}
       propertyPath: m_LocalPosition.x
@@ -228,7 +232,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 235926663500231508, guid: 3b59debefb9ecdd428dd80e0c4dff3c7, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.65
+      value: 0.55
       objectReference: {fileID: 0}
     - target: {fileID: 235926663500231508, guid: 3b59debefb9ecdd428dd80e0c4dff3c7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -241,6 +245,10 @@ PrefabInstance:
     - target: {fileID: 235926663500231508, guid: 3b59debefb9ecdd428dd80e0c4dff3c7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2004100155829996935, guid: 3b59debefb9ecdd428dd80e0c4dff3c7, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5066105463741938657, guid: 3b59debefb9ecdd428dd80e0c4dff3c7, type: 3}
       propertyPath: m_Name
@@ -282,7 +290,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4961718070622743867, guid: 2bf2988505276084f867ea43178732a7, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.5
+      value: -0.42
       objectReference: {fileID: 0}
     - target: {fileID: 4961718070622743867, guid: 2bf2988505276084f867ea43178732a7, type: 3}
       propertyPath: m_LocalPosition.z

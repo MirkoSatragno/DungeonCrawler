@@ -43,7 +43,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f3ac3ccf748e8246a38b582e3f27d55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LEVEL_NAME_MAIN_MENU: MainMenu
-  LEVEL_NAME_PAUSE_MENU: PauseMenu
-  LEVEL_NAME_LEVEL_1: Level1
-  LEVEL_NAME_LEVEL_2: Level2
+  defaultMouseIcon: {fileID: 2800000, guid: 48145a78f1bc71e4e800bc06368a9382, type: 3}
+  selectableMouseIcon: {fileID: 2800000, guid: a3e6002f48497804d813cc7d25060ab9, type: 3}
+  infoMouseIcon: {fileID: 2800000, guid: d3dd13fca0401e64a8d1fcb9b1e3e443, type: 3}

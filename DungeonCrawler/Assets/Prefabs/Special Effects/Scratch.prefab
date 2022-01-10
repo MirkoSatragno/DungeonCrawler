@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 570686590466832619}
   - component: {fileID: 1198883759491981883}
   - component: {fileID: 8108461320945682444}
-  - component: {fileID: 2236314420931324022}
+  - component: {fileID: -772568062035337642}
   m_Layer: 0
   m_Name: Scratch
   m_TagString: VisualEffect
@@ -71,7 +71,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -428238157
-  m_SortingLayer: 3
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: -8540397549773956295, guid: 0bf1b5f5bcd6dd142aa698763bb582ae, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -103,7 +103,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &2236314420931324022
+--- !u!114 &-772568062035337642
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -112,6 +112,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 2018835760371655657}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 291fbb9bd99eb5042a11c3d46a969f0e, type: 3}
+  m_Script: {fileID: 11500000, guid: 93435969a8f906945bfca5c4124b86f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

@@ -5,20 +5,18 @@ using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
+    
     [SerializeField]
     private Grid mainGrid;
+    
     [SerializeReference]
-    private UnmovableCharacter unmovableCharacter;
+    private UnmovableCharacter bossCharacter;
     [SerializeField]
-    private Vector2 startingPosition;
-    [SerializeReference]
-    private EnemyCharacter enemyCharacter;
-    [SerializeField]
-    private Vector2 startingPosition2;
+    private Vector2 startingPositionBoss;
     [SerializeReference]
     private PlayerCharacter playerCharacter;
     [SerializeField]
-    private Vector2 startingPosition3;
+    private Vector2 startingPositionPlayer;
 
     static LevelManager _instance;
     static public LevelManager Instance
@@ -34,6 +32,7 @@ public class LevelManager : MonoBehaviour
 
     private int nextCharacterID;
     private Hashtable activeCharactersMap;
+    public bool friendSaved;
 
     [HideInInspector]
     public TurnManager turnManager;
@@ -49,6 +48,10 @@ public class LevelManager : MonoBehaviour
 
         turnManager = GetComponent<TurnManager>();
         Debug.Assert(turnManager, "LevelManager: turnManaget component not found");
+
+        
+
+        friendSaved = false;
     }
 
     void OnEnable()
@@ -59,20 +62,13 @@ public class LevelManager : MonoBehaviour
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         InstantiatePlayer();
-        InstantiatePlayer2();
-        InstantiatePlayer3();
+        //InstantiateBoss();
 
         turnManager.StartNewTurn();
     }
 
     // Start is called before the first frame update
     void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
     {
         
     }
@@ -86,6 +82,7 @@ public class LevelManager : MonoBehaviour
 
 
 
+
     private void setGridCellSize()
     {
         Debug.Assert(mainGrid, "LevelManager: mainGrid reference is missing");
@@ -94,13 +91,16 @@ public class LevelManager : MonoBehaviour
         _cellSize = cell.x;
     }
 
+    
+
+
     private int getNewCharacterId()
     {
         return nextCharacterID++;
     }
 
     /*"Active" means that it's alive and present; not "current"*/
-    public Character GetActiveCharacter(int characterId)
+    public Character GetCharacter(int characterId)
     {
         if (activeCharactersMap.ContainsKey(characterId))
             return (Character) activeCharactersMap[characterId];
@@ -108,39 +108,34 @@ public class LevelManager : MonoBehaviour
         return null;
     }
 
+    private void InstantiateBoss()
+    {
+        int characterId = getNewCharacterId();
+        UnmovableCharacter spawnedCharacter = Instantiate(bossCharacter, (Vector3)startingPositionBoss, Quaternion.identity);
+        spawnedCharacter.CharacterId = characterId;
+        activeCharactersMap.Add(characterId, spawnedCharacter);
+        turnManager.AddToQueue(characterId);
+    }
+
+    //Debug purpose only
     private void InstantiatePlayer()
     {
         int characterId = getNewCharacterId();
-        UnmovableCharacter spawnedPlayer = Instantiate(unmovableCharacter);
+        PlayerCharacter spawnedPlayer = Instantiate(playerCharacter, (Vector3)startingPositionPlayer, Quaternion.identity);
         spawnedPlayer.CharacterId = characterId;
         activeCharactersMap.Add(characterId, spawnedPlayer);
         turnManager.AddToQueue(characterId);
-
-        spawnedPlayer.transform.position = startingPosition;
     }
 
-    //Debug purpose only
-    private void InstantiatePlayer2()
+
+
+    public void InstantiateEnemy(EnemyCharacter enemyType, Vector2 position)
     {
         int characterId = getNewCharacterId();
-        EnemyCharacter spawnedPlayer = Instantiate(enemyCharacter);
-        spawnedPlayer.CharacterId = characterId;
-        activeCharactersMap.Add(characterId, spawnedPlayer);
+        EnemyCharacter spawnedEnemy = Instantiate(enemyType, (Vector3)position, Quaternion.identity);
+        spawnedEnemy.CharacterId = characterId;
+        activeCharactersMap.Add(characterId, spawnedEnemy);
         turnManager.AddToQueue(characterId);
-
-        spawnedPlayer.transform.position = startingPosition2;
-    }
-
-    //Debug purpose only
-    private void InstantiatePlayer3()
-    {
-        int characterId = getNewCharacterId();
-        PlayerCharacter spawnedPlayer = Instantiate(playerCharacter);
-        spawnedPlayer.CharacterId = characterId;
-        activeCharactersMap.Add(characterId, spawnedPlayer);
-        turnManager.AddToQueue(characterId);
-
-        spawnedPlayer.transform.position = startingPosition3;
     }
 
     public void RemoveCharacter(int characterId)
@@ -150,4 +145,32 @@ public class LevelManager : MonoBehaviour
         activeCharactersMap.Remove(characterId);
         //can't remove from turnQueue because it's not random access
     }
+
+
+
+    static public GameObject GetGameObjectAtLocation(Vector2 position)
+    {
+        //I don't want to detect a collision on the extreme limit of a collider
+        float boundaryCorrection = 0.95f;
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(position, LevelManager.Instance.CellSize / 2 * boundaryCorrection);
+
+        List<Collider2D> nonTriggers = new List<Collider2D>();
+        foreach (Collider2D coll in colliders)
+            if (!coll.isTrigger)
+                nonTriggers.Add(coll);
+
+        if (1 < nonTriggers.Count)
+            Debug.Log("LevelManager: unexpected coliders quantity");
+
+        if (nonTriggers.Count == 1)
+            return nonTriggers[0].gameObject;
+
+        return null;
+    }
+
+    public int charactersNumberInDungeon()
+    {
+        return activeCharactersMap.Count;
+    }
+
 }

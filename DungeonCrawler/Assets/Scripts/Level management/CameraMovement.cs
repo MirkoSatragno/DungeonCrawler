@@ -9,7 +9,7 @@ public class CameraMovement : MonoBehaviour
     void Update()
     {
         int newCurrentCharacter = LevelManager.Instance.turnManager.ActiveCharacterIdCurrentTurn();
-        Character currentChar = LevelManager.Instance.GetActiveCharacter(newCurrentCharacter);
+        Character currentChar = LevelManager.Instance.GetCharacter(newCurrentCharacter);
         Debug.Assert(currentChar, "CameraMovement: character not found");
 
         if (this.transform.position != currentChar.transform.position)

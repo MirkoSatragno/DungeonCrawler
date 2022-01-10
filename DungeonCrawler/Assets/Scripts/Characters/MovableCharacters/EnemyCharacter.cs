@@ -1,27 +1,38 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+//using System;
 
 public class EnemyCharacter : MovableCharacter
 {
     [SerializeField]
-    private float maxStartHuntingRadius = 3;
+    private float maxStartHuntingRadius = 30;
     [SerializeField]
     private int maxPredictedWalkCost = 10;
     
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+
 
     // Update is called once per frame
     void Update()
     {
-        //if (IsMyTurn() && CurrentState == CharacterState.Idle && Input.GetMouseButtonDown(0))
-        //{
-        //    StartCoroutine("EndMyTurn");
-        //}
+        if(IsMyTurn() && CurrentState == CharacterState.Moving)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, movementDestination, LevelManager.Instance.CellSize * Time.deltaTime / movementDuration);
+            if (transform.position == movementDestination)
+                EndMovement();
+
+        }
+
+        if (CurrentState == CharacterState.Dieing)
+        {
+            Color spriteColor = sprite.color;
+            spriteColor.a = Mathf.Max(0f, spriteColor.a - Time.deltaTime / disappearingDuration);
+            sprite.color = spriteColor;
+
+            if (spriteColor.a == 0)
+                Destroy(gameObject);
+
+        }
     }
 
 
@@ -37,25 +48,23 @@ public class EnemyCharacter : MovableCharacter
 
         attackedCharacter = FindPlayerAround();
         if (attackedCharacter)
-        {
             Attack(attackedCharacter);
-            
-            yield return new WaitForSeconds(1);
-        }
         else
         {
             Vector2 movementDirection;
             Character player = FindReachablePlayer(out movementDirection);
 
-            //if (player)
-            //    Debug.Log("Found " + player.name);
-
-            StartCoroutine("EndMyTurn");
+            if (player)
+                MoveTo(movementDirection);
+            else
+                if(!MoveRandom())
+                    StartCoroutine("EndMyTurn");
+                
         }
 
-        
 
     }
+
 
 
     public Character FindReachablePlayer(out Vector2 movementDirection)
@@ -71,6 +80,7 @@ public class EnemyCharacter : MovableCharacter
 
                 if(CanPlayerBeReached(player, out movementDirection))
                     return player;
+                    
             }
 
         movementDirection = Vector2.zero;
@@ -82,33 +92,30 @@ public class EnemyCharacter : MovableCharacter
         float cellSize = LevelManager.Instance.CellSize;
         Vector3 targetPos = player.transform.position;
 
-        SortedList<float, DjikNode> nearbyNodes = new SortedList<float, DjikNode>();
+        SortedSet<DjikNode> nearbyNodes = new SortedSet<DjikNode>();
         Hashtable visitedNodes = new Hashtable();
         
         DjikNode startingNode = new DjikNode(null, (Vector2)transform.position, player.transform.position);
         visitedNodes.Add(startingNode.position, startingNode);
 
         DjikNode topNode = new DjikNode(startingNode, startingNode.position + new Vector2(0, cellSize), targetPos);
-        nearbyNodes.Add(topNode.targetDist, topNode);
+        nearbyNodes.Add(topNode);
         DjikNode downNode = new DjikNode(startingNode, startingNode.position + new Vector2(0, -1 * cellSize), targetPos);
-        nearbyNodes.Add(downNode.targetDist, downNode);
+        nearbyNodes.Add(downNode);
         DjikNode leftNode = new DjikNode(startingNode, startingNode.position + new Vector2(-1 * cellSize, 0), targetPos);
-        nearbyNodes.Add(leftNode.targetDist, leftNode);
+        nearbyNodes.Add(leftNode);
         DjikNode rightNode = new DjikNode(startingNode, startingNode.position + new Vector2(cellSize, 0), targetPos);
-        nearbyNodes.Add(rightNode.targetDist, rightNode);
+        nearbyNodes.Add(rightNode);
 
         
 
         while (nearbyNodes.Count != 0)
         {
-            float currentKey = nearbyNodes.Keys[0];
-            DjikNode currentNode = nearbyNodes[currentKey];
-            nearbyNodes.Remove(currentKey);
+            DjikNode currentNode = nearbyNodes.Min;
+            nearbyNodes.Remove(currentNode);
             
 
-            Debug.Log("Current node: " + currentNode.targetDist);
-
-            GameObject obj = GameobjectAtLocation(currentNode.position);
+            GameObject obj = LevelManager.GetGameObjectAtLocation(currentNode.position);
             if(obj == null && currentNode.cost < maxPredictedWalkCost)
             {
                 //The cell is empty and the enemy could potentially move here. Let's look around and find new nearby cells.
@@ -117,49 +124,67 @@ public class EnemyCharacter : MovableCharacter
 
                 topNode = new DjikNode(currentNode, currentNode.position + new Vector2(0, cellSize), targetPos);
                 if (!visitedNodes.Contains(topNode.position))
-                    nearbyNodes.Add(topNode.targetDist, topNode);
+                    nearbyNodes.Add(topNode);
                 downNode = new DjikNode(currentNode, currentNode.position + new Vector2(0, -1 * cellSize), targetPos);
                 if (!visitedNodes.Contains(downNode.position))
-                    nearbyNodes.Add(downNode.targetDist, downNode);
+                    nearbyNodes.Add(downNode);
                 leftNode = new DjikNode(currentNode, currentNode.position + new Vector2(-1 * cellSize, 0), targetPos);
                 if (!visitedNodes.Contains(leftNode.position))
-                    nearbyNodes.Add(leftNode.targetDist, leftNode);
+                    nearbyNodes.Add(leftNode);
                 rightNode = new DjikNode(currentNode, currentNode.position + new Vector2(cellSize, 0), targetPos);
                 if (!visitedNodes.Contains(rightNode.position))
-                    nearbyNodes.Add(rightNode.targetDist, rightNode);
+                    nearbyNodes.Add(rightNode);
 
 
             } else if (obj != null && obj.CompareTag(GameManager.TAG_PLAYER))
             {
-                Debug.Log("Yes, player can be reached");
-                startDirection = Vector2.zero;
+                while (currentNode.previousNode.previousNode != null)
+                    currentNode = currentNode.previousNode;
+                
+                //"currentNode", now, is actually the first step we enemy character took in his successful path
+                startDirection = currentNode.position - startingNode.position;
                 return true;
             }                
 
         }
 
+
         startDirection = Vector2.zero;
         return false;
     }
 
-    private GameObject GameobjectAtLocation(Vector2 position)
+
+    protected bool MoveRandom()
     {
-        //I don't want to detect a collision on the extreme limit of a collider
-        float boundaryCorrection = 0.9f;
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(position, LevelManager.Instance.CellSize/2 * boundaryCorrection);
-        if (1 < colliders.Length)
-            Debug.Log("EnemyCharacter: unexpected coliders quantity");
+        Vector2[] directions = { Vector2.up, Vector2.left, Vector2.down, Vector2.right };
+        int index = Random.Range(0, directions.Length);
 
-        if(colliders.Length == 1)
-            return colliders[0].gameObject;
+        for(int i = 0; i < directions.Length; i++)
+        {
             
-        return null;
-    }
+            if (!LevelManager.GetGameObjectAtLocation(transform.position + (Vector3)directions[index] * LevelManager.Instance.CellSize))
+            {
+                MoveTo(directions[index]);
+                return true;
+            }
 
+            index = (index + 1) % directions.Length;
+        }
+        Debug.Log("Can't move");
+        return false;
+    }
 
 }
 
-public class DjikNode
+
+
+
+
+
+
+
+
+public class DjikNode : System.IComparable<DjikNode>
 {
     public Vector2 position;
     public DjikNode previousNode;
@@ -175,16 +200,16 @@ public class DjikNode
         targetDist = Vector2.Distance(position, (Vector2)targetPos);
     }
 
-    public static bool operator <(DjikNode nodeA, DjikNode nodeB)
+    public int CompareTo(DjikNode otherNode)
     {
-        return nodeA.targetDist < nodeB.targetDist;
-    }
+        if (this.targetDist != otherNode.targetDist)
+            return this.targetDist.CompareTo(otherNode.targetDist);
 
-    public static bool operator >(DjikNode nodeA, DjikNode nodeB)
-    {
-        return nodeA.targetDist > nodeB.targetDist;
-    }
+        if(this.position.x != otherNode.position.x)
+        return this.position.x.CompareTo(otherNode.position.x);
 
+        return this.position.y.CompareTo(otherNode.position.y);
+    }
 }
 
 

@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - VisualEffect
+  - Enemy
+  - Item
+  - EnemySpawner
   layers:
   - Default
   - TransparentFX
@@ -12,7 +15,7 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - SpawnColliderBoundary
   - 
   - 
   - 
@@ -42,6 +45,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Ground
+    uniqueID: 4056619595
+    locked: 0
+  - name: Walls
+    uniqueID: 379340991
+    locked: 0
   - name: Behind Characters
     uniqueID: 99653745
     locked: 0
@@ -50,6 +59,9 @@ TagManager:
     locked: 0
   - name: Over Characters
     uniqueID: 3866729139
+    locked: 0
+  - name: Environment over
+    uniqueID: 3961878833
     locked: 0
   - name: UI
     uniqueID: 539056895
