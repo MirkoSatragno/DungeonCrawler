@@ -27,6 +27,7 @@ public class PotionManager : MonoBehaviour, IBeginDragHandler, IEndDragHandler, 
 
     private Text potionCounterText;
     private Image flyingPotion;
+    private Image flyingSparkling;
     private Canvas parentCanvas;
 
     private void Awake()
@@ -61,8 +62,12 @@ public class PotionManager : MonoBehaviour, IBeginDragHandler, IEndDragHandler, 
     {
         if (LevelManager.Instance.GetCurrentCharacter().CurrentState != Character.CharacterState.Idle || PotionCounter <= 0)
             return;
-        
+
         flyingPotion = Instantiate<Image>(potionImage, parentCanvas.transform);
+        flyingPotion.GetComponent<Canvas>().sortingLayerName = GameManager.SORTING_LAYER_NAME_UI;
+        flyingSparkling = flyingPotion.transform.GetChild(0).GetComponent<Image>();
+        flyingSparkling.GetComponent<Canvas>().sortingLayerName = GameManager.SORTING_LAYER_NAME_UI;
+        
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -114,7 +119,6 @@ public class PotionManager : MonoBehaviour, IBeginDragHandler, IEndDragHandler, 
             return;
         loopingRedSparkling.gameObject.SetActive(true);
         GameManager.Instance.setMouseIcon(GameManager.MouseIcon.Selectable);
-        Debug.Log("Hey");
     }
 
     public void OnPointerExit(PointerEventData eventData)

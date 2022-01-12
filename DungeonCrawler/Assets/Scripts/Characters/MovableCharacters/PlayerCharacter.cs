@@ -5,8 +5,9 @@ using UnityEngine;
 public class PlayerCharacter : MovableCharacter
 {
     [SerializeField, Tooltip("Starting main character")]
-    protected TurnCanvas playerTurnCanvas;
+    protected TurnCanvas turnCanvas;
 
+    protected TurnCanvas playerTurnCanvas;
     public delegate void UseItemDelegate(int characterId);
     public static UseItemDelegate UseItem;
 
@@ -17,7 +18,9 @@ public class PlayerCharacter : MovableCharacter
     {
         base.Awake();
 
-        Debug.Assert(playerTurnCanvas, "LevelManager: CanvasRenderer reference not found");
+        Debug.Assert(turnCanvas, "PlayerCharacter: CanvasRenderer reference not found");
+        playerTurnCanvas =  Instantiate<TurnCanvas>(turnCanvas);
+
         if (playerTurnCanvas.gameObject.activeSelf)
             playerTurnCanvas.gameObject.SetActive(false);
         playerTurnCanvas.GetComponent<Canvas>().worldCamera = Camera.main;
@@ -73,7 +76,6 @@ public class PlayerCharacter : MovableCharacter
     {
         if (collision.gameObject.GetComponent<Potion>())
         {
-            Debug.Log("Potion found");
             Destroy(collision.gameObject);
             if(PotionManager.PotionFound != null)
                 PotionManager.PotionFound();
@@ -84,21 +86,14 @@ public class PlayerCharacter : MovableCharacter
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag(GameManager.TAG_ENEMY_SPAWNER))
-        {
-            Debug.Log(name + "Entering room " + collision.name);
-
             collision.gameObject.GetComponent<EnemySpawn>().enteringPlayer();
-        }
             
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag(GameManager.TAG_ENEMY_SPAWNER))
-        {
-            Debug.Log(name + "Exiting room " + collision.name);
             collision.gameObject.GetComponent<EnemySpawn>().exitingPlayer();
-        }
             
     }
 

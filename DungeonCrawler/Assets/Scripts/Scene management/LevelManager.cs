@@ -60,7 +60,6 @@ public class LevelManager : MonoBehaviour
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         InstantiatePlayer();
-        //InstantiateBoss();
 
         turnManager.StartNewTurn();
     }
@@ -117,7 +116,6 @@ public class LevelManager : MonoBehaviour
     {
         int characterId = getNewCharacterId();
         PlayerCharacter spawnedPlayer = Instantiate(playerCharacter, (Vector3)startingPositionPlayer, Quaternion.identity);
-        Debug.Log("Instantiated");
         spawnedPlayer.CharacterId = characterId;
         activeCharactersMap.Add(characterId, spawnedPlayer);
         turnManager.AddToQueue(characterId);

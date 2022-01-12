@@ -7,13 +7,13 @@ public class WizardPlayer : PlayerCharacter
     public delegate void EndPowerDelegate();
     public static EndPowerDelegate EndPower;
 
-    [SerializeReference]
     private SpecialPowerManager powerManager;
 
     override protected void Awake()
     {
         base.Awake();
 
+        powerManager = playerTurnCanvas.GetComponentInChildren<SpecialPowerManager>();
         Debug.Assert(powerManager, "WizardPlayer: specialPowerManager reference not found");
     }
 

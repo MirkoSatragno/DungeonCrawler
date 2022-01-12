@@ -40,6 +40,9 @@ public class GameManager : MonoBehaviour
     [HideInInspector]
     public const string AXIS_NAME_VERTICAL = "Vertical";
 
+    [HideInInspector]
+    public const string SORTING_LAYER_NAME_UI = "UI";
+
 
     [HideInInspector]
     public const string LAYER_NAME_SPAWN_COLLIDER_BOUNDARY = "SpawnColliderBoundary";
