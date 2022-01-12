@@ -5,7 +5,10 @@ using UnityEngine;
 public class PlayerCharacter : MovableCharacter
 {
     [SerializeField, Tooltip("Starting main character")]
-    private Canvas playerTurnCanvas;
+    protected TurnCanvas playerTurnCanvas;
+
+    public delegate void UseItemDelegate(int characterId);
+    public static UseItemDelegate UseItem;
 
 
     protected DirectionalActions directionalUI;
@@ -17,11 +20,17 @@ public class PlayerCharacter : MovableCharacter
         Debug.Assert(playerTurnCanvas, "LevelManager: CanvasRenderer reference not found");
         if (playerTurnCanvas.gameObject.activeSelf)
             playerTurnCanvas.gameObject.SetActive(false);
-        playerTurnCanvas.worldCamera = Camera.main;
+        playerTurnCanvas.GetComponent<Canvas>().worldCamera = Camera.main;
 
         directionalUI = GetComponentInChildren<DirectionalActions>();
         Debug.Assert(directionalUI, "PlayerCharacter: directionalActions child not found");
         directionalUI.gameObject.SetActive(false);
+    }
+
+    override protected void OnEnable()
+    {
+        base.OnEnable();
+        UseItem += onUseItem;
     }
 
     // Start is called before the first frame update
@@ -52,6 +61,12 @@ public class PlayerCharacter : MovableCharacter
                 Destroy(gameObject);
                 
         }
+    }
+
+    override protected void OnDisable()
+    {
+        base.OnDisable();
+        UseItem -= onUseItem;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -109,20 +124,21 @@ public class PlayerCharacter : MovableCharacter
 
     protected void SetMoveForSingleDirectionalUI(DirectionalActions.Direction dir, Vector3 position)
     {
-        if (GetTaggedCharacterAtNearPosition(GameManager.TAG_ENEMY, position))
+        if (LevelManager.GetTaggedObjectAtNearPosition<Character>(GameManager.TAG_ENEMY, position, boxCollider.size))
             directionalUI.SetAction(dir, DirectionalActions.Action.Attack);
-        else if (GetTaggedCharacterAtNearPosition(GameManager.TAG_ITEM, position))
+        else if (LevelManager.GetTaggedObjectAtNearPosition<GameObject>(GameManager.TAG_ITEM, position, boxCollider.size))
             directionalUI.SetAction(dir, DirectionalActions.Action.Move);
         else if (!LevelManager.GetGameObjectAtLocation(position))
             directionalUI.SetAction(dir, DirectionalActions.Action.Move);
         else //C'è qualcosa, ma non è nulla di interagibile. Lo si tratta da ostacolo
             directionalUI.SetAction(dir, DirectionalActions.Action.None);
+
     }
 
     
     public void MoveButtonPressed(DirectionalActions.Direction dir)
     {
-        directionalUI.gameObject.SetActive(false);
+        DisableInputTurnUI();
         Vector3 movementDirection = Vector3.zero;
 
         switch (dir)
@@ -146,7 +162,7 @@ public class PlayerCharacter : MovableCharacter
 
     public void AttackButtonPressed(DirectionalActions.Direction dir)
     {
-        directionalUI.gameObject.SetActive(false);
+        DisableInputTurnUI();
         Vector3 enemyLocation = Vector3.zero;
 
         switch (dir)
@@ -165,23 +181,41 @@ public class PlayerCharacter : MovableCharacter
                 break;
         }
 
-        attackedCharacter = GetTaggedCharacterAtNearPosition(GameManager.TAG_ENEMY, enemyLocation);
+        attackedCharacter = LevelManager.GetTaggedObjectAtNearPosition<Character>(GameManager.TAG_ENEMY, enemyLocation, boxCollider.size);
         Attack(attackedCharacter);
     }
 
     public void SleepButtonPressed()
     {
-        directionalUI.gameObject.SetActive(false);
-        
+        DisableInputTurnUI();
+
         StartCoroutine("EndMyTurn");
     }
 
+    public void ReceivedPotion()
+    {
+        SetStamina(Mathf.Min(MaxStaminaStat, Stamina + Potion.healingAmount));
+    }
+
+    public void onUseItem(int characterId)
+    {
+        if (characterId != CharacterId)
+            return;
+
+        DisableInputTurnUI();
+    }
+
+    protected void DisableInputTurnUI()
+    {
+        directionalUI.gameObject.SetActive(false);
+        SetPlayerTurnCanvasActive(false);
+    }
 
     override protected void DisableTurnUI()
     {
         turnCircle.SetActive(false);
-        SetPlayerTurnCanvasActive(false);
         CurrentState = CharacterState.Spectating;
     }
 
+    
 }

@@ -6,7 +6,7 @@ public class ActionEffect : SpecialEffect
 {
     override public void onEndAnimation()
     {
-        Character.EndAttack(LevelManager.Instance.turnManager.ActiveCharacterIdCurrentTurn());
+        Character.EndAction(LevelManager.Instance.turnManager.ActiveCharacterIdCurrentTurn());
 
         base.onEndAnimation();
     }

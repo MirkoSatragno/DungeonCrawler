@@ -32,8 +32,8 @@ public class Character : MonoBehaviour
     protected float preTurnWait = 1f;
     [SerializeField, Range(0.5f, 10f)]
     protected float postTurnWait = 1f;
-    [SerializeField]
-    protected float disappearingDuration = 2;
+    [SerializeField, Range(0.5f, 10f)]
+    public float disappearingDuration = 2;
 
     protected const string ANIMATOR_PARAMETER_SPEED_NAME = "Speed";
     protected const float ANIMATOR_PARAMETER_SPEED_SLOW = 0.1f;
@@ -45,15 +45,16 @@ public class Character : MonoBehaviour
     protected const int ANIMATOR_PARAMETER_DIRECTION_BACK = 2;
     protected const int ANIMATOR_PARAMETER_DIRECTION_RIGHT = 3;
 
-    public delegate void EndAttackDelegate(int attackerId);
-    public static EndAttackDelegate EndAttack;
+    public delegate void EndActionDelegate(int attackerId);
+    public static EndActionDelegate EndAction;
 
 
 
 
 
     protected Animator animator;
-    protected BoxCollider2D boxCollider;
+    [HideInInspector]
+    public BoxCollider2D boxCollider;
     protected HealthBar healthBar;
     protected SpriteRenderer sprite;
 
@@ -79,6 +80,7 @@ public class Character : MonoBehaviour
         Idle,
         Moving,
         Attacking,
+        Busy, //special ability, if any is available
         Dieing
     }
 
@@ -103,7 +105,6 @@ public class Character : MonoBehaviour
     virtual protected void Awake()
     {
         Debug.Assert(turnCircle, "Character: turnCircle not found");
-        Debug.Assert(turnCircle.CompareTag(GameManager.TAG_VISUAL_EFFECT), "Character: turnCircle not found");
         turnCircle.SetActive(false);
 
         Debug.Assert(AttackEffect, "Character: attackEffect not found");
@@ -128,16 +129,12 @@ public class Character : MonoBehaviour
         attackedCharacter = null;
     }
 
-    private void OnEnable()
+    virtual protected void OnEnable()
     {
-        EndAttack += onEndAttack;
+        EndAction += onEndAction;
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    
 
     // Update is called once per frame
     void Update()
@@ -145,9 +142,9 @@ public class Character : MonoBehaviour
         
     }
 
-    private void OnDisable()
+    virtual protected void OnDisable()
     {
-        EndAttack -= onEndAttack;
+        EndAction -= onEndAction;
     }
 
 
@@ -178,49 +175,7 @@ public class Character : MonoBehaviour
         turnCircle.SetActive(true);
     }
 
-    virtual protected Character FindPlayerAround()
-    {
-        Vector3 characterLocation = transform.position;
-        Character result;
-
-        string playerTag = GameManager.TAG_PLAYER;
-
-        result = GetTaggedCharacterAtNearPosition(playerTag, transform.position + Vector3.down);
-        if (result)
-            return result;
-
-        result = GetTaggedCharacterAtNearPosition(playerTag, transform.position + Vector3.left);
-        if (result)
-            return result;
-
-        result = GetTaggedCharacterAtNearPosition(playerTag, transform.position + Vector3.up);
-        if (result)
-            return result;
-
-        result = GetTaggedCharacterAtNearPosition(playerTag, transform.position + Vector3.right);
-        if (result)
-            return result;
-
-        return null;
-    }
-
-    protected Character GetTaggedCharacterAtNearPosition(string TAG, Vector3 location)
-    {
-        //I don't want to detect a collision on the extreme limit of a collider
-        float boundaryCorrection = 0.9f;
-        Vector2 pointA = (Vector2)location + boxCollider.size / 2 * boundaryCorrection;
-        Vector2 pointB = (Vector2)location - boxCollider.size / 2 * boundaryCorrection;
-        Collider2D[] colliders = Physics2D.OverlapAreaAll(pointA, pointB);
-
-        
-
-        foreach(Collider2D coll in colliders)
-            if (coll.CompareTag(TAG))
-                return coll.gameObject.GetComponent<Character>();
-
-
-        return null;
-    }
+    
 
     virtual protected void Attack(Character target) 
     {
@@ -266,9 +221,9 @@ public class Character : MonoBehaviour
         SetStamina(Stamina - damage);
     }
 
-    virtual protected void onEndAttack(int attackerId)
+    virtual protected void onEndAction(int characterId)
     {
-        if (attackerId != CharacterId)
+        if (characterId != CharacterId)
             return;
 
         animator.SetFloat(ANIMATOR_PARAMETER_SPEED_NAME, ANIMATOR_PARAMETER_SPEED_SLOW);

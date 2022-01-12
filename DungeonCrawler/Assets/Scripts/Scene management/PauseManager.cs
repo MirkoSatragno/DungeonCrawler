@@ -5,8 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class PauseManager : MonoBehaviour
 {
-    
-    
+
+    public delegate void PauseGameDelegate();
+    public static PauseGameDelegate PauseGame;
+
     public GameObject pauseCanvas;
 
     private void Awake()
@@ -14,11 +16,22 @@ public class PauseManager : MonoBehaviour
         Debug.AssertFormat(pauseCanvas, "PauseManager: pauseCanvas parameter is missing");
     }
 
+    private void OnEnable()
+    {
+        PauseGame += onPauseButtonPressed;
+    }
+
     private void Start()
     {
         if (pauseCanvas.activeSelf)
             pauseCanvas.SetActive(false);
     }
+
+    private void OnDisable()
+    {
+        PauseGame -= onPauseButtonPressed;
+    }
+
     public void onPauseButtonPressed()
     {
         pauseCanvas.SetActive(true);

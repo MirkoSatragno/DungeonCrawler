@@ -33,7 +33,7 @@ public class GameManager : MonoBehaviour
     [HideInInspector]
     public const string TAG_ITEM = "Item";
     [HideInInspector]
-    public const string TAG_VISUAL_EFFECT = "VisualEffect";
+    public const string TAG_OBSTACLE = "Obstacle";
 
     [HideInInspector]
     public const string AXIS_NAME_HORIZONTAL = "Horizontal";

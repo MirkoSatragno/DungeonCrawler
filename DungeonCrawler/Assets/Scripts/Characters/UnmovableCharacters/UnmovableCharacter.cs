@@ -24,15 +24,36 @@ public class UnmovableCharacter : Character
     {
         StartCoroutine("SetupStartingTurnUI");
 
-        yield return new WaitForSeconds(preTurnWait);
+        
         CurrentState = CharacterState.Idle;
 
-        attackedCharacter = FindPlayerAround();
+        attackedCharacter = LevelManager.FindTaggedObjectAround<PlayerCharacter>(GameManager.TAG_PLAYER, transform.position, boxCollider.size);
         if (attackedCharacter)
+        {
+            yield return new WaitForSeconds(preTurnWait);
             Attack(attackedCharacter);
+        }
         else
             StartCoroutine("EndMyTurn");
         
     }
 
+    override public IEnumerator EndMyTurn()
+    {
+        //better wait before the possible death wait, to be sure the player has already entered dieing state
+        if (attackedCharacter)
+        {
+            yield return new WaitForSeconds(postTurnWait);
+
+            if (attackedCharacter.CurrentState == CharacterState.Dieing)
+                yield return new WaitForSeconds(attackedCharacter.disappearingDuration);
+        }
+        
+
+        
+
+
+        DisableTurnUI();
+        TurnManager.EndTurn(CharacterId);
+    }
 }

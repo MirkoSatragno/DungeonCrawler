@@ -46,9 +46,11 @@ public class EnemyCharacter : MovableCharacter
         yield return new WaitForSeconds(preTurnWait);
         CurrentState = CharacterState.Idle;
 
-        attackedCharacter = FindPlayerAround();
+        attackedCharacter = LevelManager.FindTaggedObjectAround<PlayerCharacter>(GameManager.TAG_PLAYER, transform.position, boxCollider.size);
         if (attackedCharacter)
+        {
             Attack(attackedCharacter);
+        }  
         else
         {
             Vector2 movementDirection;

@@ -49,8 +49,6 @@ public class LevelManager : MonoBehaviour
         turnManager = GetComponent<TurnManager>();
         Debug.Assert(turnManager, "LevelManager: turnManaget component not found");
 
-        
-
         friendSaved = false;
     }
 
@@ -67,17 +65,12 @@ public class LevelManager : MonoBehaviour
         turnManager.StartNewTurn();
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
     // called when the game is terminated
     void OnDisable()
     {
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
+
 
 
 
@@ -90,8 +83,6 @@ public class LevelManager : MonoBehaviour
         Debug.Assert(cell.x == cell.y, "LevelManager: mainGrid cell shape is not a square");
         _cellSize = cell.x;
     }
-
-    
 
 
     private int getNewCharacterId()
@@ -108,7 +99,7 @@ public class LevelManager : MonoBehaviour
         return null;
     }
 
-    private void InstantiateBoss()
+    public void InstantiateBoss()
     {
         int characterId = getNewCharacterId();
         UnmovableCharacter spawnedCharacter = Instantiate(bossCharacter, (Vector3)startingPositionBoss, Quaternion.identity);
@@ -117,7 +108,6 @@ public class LevelManager : MonoBehaviour
         turnManager.AddToQueue(characterId);
     }
 
-    //Debug purpose only
     private void InstantiatePlayer()
     {
         int characterId = getNewCharacterId();
@@ -126,7 +116,6 @@ public class LevelManager : MonoBehaviour
         activeCharactersMap.Add(characterId, spawnedPlayer);
         turnManager.AddToQueue(characterId);
     }
-
 
 
     public void InstantiateEnemy(EnemyCharacter enemyType, Vector2 position)
@@ -151,8 +140,8 @@ public class LevelManager : MonoBehaviour
     static public GameObject GetGameObjectAtLocation(Vector2 position)
     {
         //I don't want to detect a collision on the extreme limit of a collider
-        float boundaryCorrection = 0.95f;
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(position, LevelManager.Instance.CellSize / 2 * boundaryCorrection);
+        float smallRadiusFactor = 0.01f;
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(position, LevelManager.Instance.CellSize / 2 * smallRadiusFactor);
 
         List<Collider2D> nonTriggers = new List<Collider2D>();
         foreach (Collider2D coll in colliders)
@@ -166,6 +155,46 @@ public class LevelManager : MonoBehaviour
             return nonTriggers[0].gameObject;
 
         return null;
+    }
+
+    static public Type FindTaggedObjectAround<Type>(string tag, Vector3 location, Vector2 colliderSize)
+    {
+        Type result;
+
+        result = GetTaggedObjectAtNearPosition<Type>(tag, location + Vector3.down, colliderSize);
+        if (result != null && !result.Equals(default(Type)))
+            return result;
+
+        result = GetTaggedObjectAtNearPosition<Type>(tag, location + Vector3.left, colliderSize);
+        if (result != null && !result.Equals(default(Type)))
+            return result;
+
+        result = GetTaggedObjectAtNearPosition<Type>(tag, location + Vector3.up, colliderSize);
+        if (result != null && !result.Equals(default(Type)))
+            return result;
+
+        result = GetTaggedObjectAtNearPosition<Type>(tag, location + Vector3.right, colliderSize);
+        if (result != null && !result.Equals(default(Type)))
+            return result;
+
+        return default(Type);
+    }
+
+    static public Type GetTaggedObjectAtNearPosition<Type>(string TAG, Vector3 location, Vector2 colliderSize)
+    {
+        //I don't want to detect a collision on the extreme limit of a collider
+        float boundaryCorrection = 0.9f;
+        Vector2 pointA = (Vector2)location + colliderSize / 2 * boundaryCorrection;
+        Vector2 pointB = (Vector2)location - colliderSize / 2 * boundaryCorrection;
+        Collider2D[] colliders = Physics2D.OverlapAreaAll(pointA, pointB);
+
+        
+
+        foreach (Collider2D coll in colliders)
+            if (coll.CompareTag(TAG))
+                return coll.gameObject.GetComponent<Type>();
+
+        return default(Type);
     }
 
     public int charactersNumberInDungeon()

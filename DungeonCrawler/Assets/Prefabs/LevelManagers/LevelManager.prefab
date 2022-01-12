@@ -46,10 +46,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainGrid: {fileID: 0}
-  startingCharacter: {fileID: 1260866755837588762, guid: 527db54b4a3193e4cb73609e15a12c99, type: 3}
-  startingPosition: {x: 0.5, y: 0.5}
-  startingCharacter2: {fileID: -5584863473300540870, guid: d58a00c4c35094c4b83bee8b0e968a80, type: 3}
-  startingPosition2: {x: -0.5, y: -0.5}
+  bossCharacter: {fileID: 0}
+  startingPositionBoss: {x: 0, y: 0}
+  playerCharacter: {fileID: 0}
+  startingPositionPlayer: {x: 0, y: 0}
+  friendSaved: 0
   turnManager: {fileID: 3291596087395813022}
 --- !u!114 &3291596087395813017
 MonoBehaviour:
@@ -63,7 +64,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f037780b0566c864397fcd673c164e8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pauseCanvas: {fileID: 0}
+  pauseCanvas: {fileID: 627778566285915108, guid: 12caa2b44db7b944096b244f8444f7cd, type: 3}
 --- !u!114 &3291596087395813022
 MonoBehaviour:
   m_ObjectHideFlags: 0
