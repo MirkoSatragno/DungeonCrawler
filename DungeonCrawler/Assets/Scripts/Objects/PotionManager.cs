@@ -12,7 +12,10 @@ public class PotionManager : MonoBehaviour, IBeginDragHandler, IEndDragHandler, 
     private SpecialEffect redSparkling;
     [SerializeReference]
     private Image loopingRedSparkling;
-    
+
+    public delegate void PotionFoundDelegate();
+    public static PotionFoundDelegate PotionFound;
+
     private int _potionCounter;
     public int PotionCounter
     {
@@ -42,11 +45,23 @@ public class PotionManager : MonoBehaviour, IBeginDragHandler, IEndDragHandler, 
         PotionCounter = 3;
     }
 
+    private void OnEnable()
+    {
+        PotionFound += onPotionFound;
+    }
+
+    private void OnDisable()
+    {
+        onEndDrag();
+        onPointerExit();
+        PotionFound -= onPotionFound;
+    }
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        if (PotionCounter <= 0)
+        if (LevelManager.Instance.GetCurrentCharacter().CurrentState != Character.CharacterState.Idle || PotionCounter <= 0)
             return;
+        
         flyingPotion = Instantiate<Image>(potionImage, parentCanvas.transform);
     }
 
@@ -62,12 +77,23 @@ public class PotionManager : MonoBehaviour, IBeginDragHandler, IEndDragHandler, 
 
     public void OnEndDrag(PointerEventData eventData)
     {
+        onEndDrag();
+    }
+
+    //I need my version without event parameters, to call it onDisable too
+    private void onEndDrag()
+    {
         if (flyingPotion == null)
             return;
 
         GameManager.Instance.setMouseIcon(GameManager.MouseIcon.Default);
         Destroy(flyingPotion.gameObject);
         flyingPotion = null;
+
+        //This prevents using potions while already moving with keyboard arrows
+        //Must be done after the destroy of the flying potion
+        if (LevelManager.Instance.GetCurrentCharacter().CurrentState != Character.CharacterState.Idle)
+            return;
 
         Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         GameObject obj = LevelManager.GetGameObjectAtLocation(mousePosition);
@@ -84,15 +110,30 @@ public class PotionManager : MonoBehaviour, IBeginDragHandler, IEndDragHandler, 
 
     public void OnPointerEnter(PointerEventData eventData)
     {
+        if (LevelManager.Instance.GetCurrentCharacter().CurrentState != Character.CharacterState.Idle)
+            return;
         loopingRedSparkling.gameObject.SetActive(true);
         GameManager.Instance.setMouseIcon(GameManager.MouseIcon.Selectable);
+        Debug.Log("Hey");
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        if(flyingPotion == null)
+        onPointerExit();
+    }
+
+    public void onPointerExit()
+    {
+        if (flyingPotion == null)
             GameManager.Instance.setMouseIcon(GameManager.MouseIcon.Default);
-        
+
         loopingRedSparkling.gameObject.SetActive(false);
     }
+
+
+    private void onPotionFound()
+    {
+        PotionCounter++;
+    }
+
 }

@@ -99,6 +99,11 @@ public class LevelManager : MonoBehaviour
         return null;
     }
 
+    public Character GetCurrentCharacter()
+    {
+        return (Character) activeCharactersMap[turnManager.ActiveCharacterIdCurrentTurn()];
+    }
+
     public void InstantiateBoss()
     {
         int characterId = getNewCharacterId();
@@ -112,6 +117,7 @@ public class LevelManager : MonoBehaviour
     {
         int characterId = getNewCharacterId();
         PlayerCharacter spawnedPlayer = Instantiate(playerCharacter, (Vector3)startingPositionPlayer, Quaternion.identity);
+        Debug.Log("Instantiated");
         spawnedPlayer.CharacterId = characterId;
         activeCharactersMap.Add(characterId, spawnedPlayer);
         turnManager.AddToQueue(characterId);
@@ -189,10 +195,12 @@ public class LevelManager : MonoBehaviour
         Collider2D[] colliders = Physics2D.OverlapAreaAll(pointA, pointB);
 
         
-
         foreach (Collider2D coll in colliders)
+        {
             if (coll.CompareTag(TAG))
                 return coll.gameObject.GetComponent<Type>();
+        }
+            
 
         return default(Type);
     }

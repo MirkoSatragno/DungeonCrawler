@@ -123,6 +123,8 @@ public class EnemySpawn : MonoBehaviour
             location = GetRandomLocationInsideRoom();
         while (LevelManager.GetGameObjectAtLocation(location));
 
+        Debug.Log(name + " is spawning an enemy");
+
         Instantiate(spawnEffect, (Vector3)location, Quaternion.identity);
         LevelManager.Instance.InstantiateEnemy(enemy, location);
     }

@@ -22,7 +22,7 @@ public class MovableCharacter : Character
 
     protected void EndMovement()
     {
-        CurrentState = CharacterState.Idle;
+        CurrentState = CharacterState.Spectating;
         animator.SetFloat(ANIMATOR_PARAMETER_SPEED_NAME, ANIMATOR_PARAMETER_SPEED_SLOW);
         StartCoroutine("EndMyTurn");
     }

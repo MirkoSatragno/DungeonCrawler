@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class TurnCanvas : MonoBehaviour
+public class SpecialPowerManager : MonoBehaviour
 {
     [SerializeReference]
     private Button enabledPowerButton;

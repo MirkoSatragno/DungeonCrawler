@@ -5,10 +5,10 @@ TagManager:
   serializedVersion: 2
   tags:
   - Enemy
-  - Item
   - EnemySpawner
   - Obstacle
   - VisualEffect
+  - Item
   layers:
   - Default
   - TransparentFX

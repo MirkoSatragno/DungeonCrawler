@@ -69,16 +69,37 @@ public class PlayerCharacter : MovableCharacter
         UseItem -= onUseItem;
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.GetComponent<Potion>())
+        {
+            Debug.Log("Potion found");
+            Destroy(collision.gameObject);
+            if(PotionManager.PotionFound != null)
+                PotionManager.PotionFound();
+        }
+                    
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag(GameManager.TAG_ENEMY_SPAWNER))
+        {
+            Debug.Log(name + "Entering room " + collision.name);
+
             collision.gameObject.GetComponent<EnemySpawn>().enteringPlayer();
+        }
+            
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag(GameManager.TAG_ENEMY_SPAWNER))
+        {
+            Debug.Log(name + "Exiting room " + collision.name);
             collision.gameObject.GetComponent<EnemySpawn>().exitingPlayer();
+        }
+            
     }
 
 
@@ -103,12 +124,16 @@ public class PlayerCharacter : MovableCharacter
         directionalUI.gameObject.SetActive(true);
         SetupDirectionalUI();
         SetPlayerTurnCanvasActive(true);
+
     }
 
     public void SetPlayerTurnCanvasActive(bool active)
     {
         if (playerTurnCanvas.gameObject.activeSelf != active)
             playerTurnCanvas.gameObject.SetActive(active);
+
+        if(active)
+            playerTurnCanvas.SetInputsActive(true);
     }
 
     protected void SetupDirectionalUI()
@@ -126,7 +151,7 @@ public class PlayerCharacter : MovableCharacter
     {
         if (LevelManager.GetTaggedObjectAtNearPosition<Character>(GameManager.TAG_ENEMY, position, boxCollider.size))
             directionalUI.SetAction(dir, DirectionalActions.Action.Attack);
-        else if (LevelManager.GetTaggedObjectAtNearPosition<GameObject>(GameManager.TAG_ITEM, position, boxCollider.size))
+        else if (LevelManager.GetTaggedObjectAtNearPosition<Item>(GameManager.TAG_ITEM, position, boxCollider.size))
             directionalUI.SetAction(dir, DirectionalActions.Action.Move);
         else if (!LevelManager.GetGameObjectAtLocation(position))
             directionalUI.SetAction(dir, DirectionalActions.Action.Move);
@@ -187,6 +212,7 @@ public class PlayerCharacter : MovableCharacter
 
     public void SleepButtonPressed()
     {
+        CurrentState = CharacterState.Busy;
         DisableInputTurnUI();
 
         StartCoroutine("EndMyTurn");
@@ -203,16 +229,18 @@ public class PlayerCharacter : MovableCharacter
             return;
 
         DisableInputTurnUI();
+        CurrentState = CharacterState.Busy;
     }
 
     protected void DisableInputTurnUI()
     {
         directionalUI.gameObject.SetActive(false);
-        SetPlayerTurnCanvasActive(false);
+        playerTurnCanvas.SetInputsActive(false);
     }
 
     override protected void DisableTurnUI()
     {
+        SetPlayerTurnCanvasActive(false);
         turnCircle.SetActive(false);
         CurrentState = CharacterState.Spectating;
     }

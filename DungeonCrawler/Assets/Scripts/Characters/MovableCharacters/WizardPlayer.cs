@@ -7,6 +7,15 @@ public class WizardPlayer : PlayerCharacter
     public delegate void EndPowerDelegate();
     public static EndPowerDelegate EndPower;
 
+    [SerializeReference]
+    private SpecialPowerManager powerManager;
+
+    override protected void Awake()
+    {
+        base.Awake();
+
+        Debug.Assert(powerManager, "WizardPlayer: specialPowerManager reference not found");
+    }
 
     override protected void OnEnable()
     {
@@ -29,7 +38,7 @@ public class WizardPlayer : PlayerCharacter
     override protected void SetupStartingTurnUI()
     {
         base.SetupStartingTurnUI();
-        playerTurnCanvas.showCorrectPowerButton();
+        powerManager.showCorrectPowerButton();
     }
 
     public void PowerButtonPressed()
