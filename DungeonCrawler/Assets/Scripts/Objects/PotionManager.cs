@@ -132,6 +132,10 @@ public class PotionManager : MonoBehaviour, IBeginDragHandler, IEndDragHandler, 
     {
         if (LevelManager.Instance.GetCurrentCharacter().CurrentState != Character.CharacterState.Idle)
             return;
+
+        if (GameManager.Instance.getMouseIcon() != GameManager.MouseIcon.Default)
+            return;
+
         loopingRedSparkling.gameObject.SetActive(true);
         GameManager.Instance.setMouseIcon(GameManager.MouseIcon.Selectable);
     }
@@ -143,6 +147,9 @@ public class PotionManager : MonoBehaviour, IBeginDragHandler, IEndDragHandler, 
 
     public void onPointerExit()
     {
+        if (GameManager.Instance.getMouseIcon() != GameManager.MouseIcon.Selectable)
+            return;
+
         if (flyingPotion == null)
             GameManager.Instance.setMouseIcon(GameManager.MouseIcon.Default);
 

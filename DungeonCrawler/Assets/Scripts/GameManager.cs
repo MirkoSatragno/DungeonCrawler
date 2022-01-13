@@ -54,6 +54,7 @@ public class GameManager : MonoBehaviour
         Info
     }
 
+    private MouseIcon currentMouseIcon;
 
     private bool _isGamePaused;
     public bool IsGamePaused
@@ -115,15 +116,23 @@ public class GameManager : MonoBehaviour
         {
             case MouseIcon.Default:
                 newIcon = defaultMouseIcon;
+                currentMouseIcon = MouseIcon.Default;
                 break;
             case MouseIcon.Selectable:
                 newIcon = selectableMouseIcon;
+                currentMouseIcon = MouseIcon.Selectable;
                 break;
             case MouseIcon.Info:
                 newIcon = infoMouseIcon;
+                currentMouseIcon = MouseIcon.Info;
                 break;
         }
 
         Cursor.SetCursor(newIcon, Vector2.zero, CursorMode.Auto);
+    }
+
+    public MouseIcon getMouseIcon()
+    {
+        return currentMouseIcon;
     }
 }

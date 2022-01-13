@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class Cage : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class Cage : MonoBehaviour
 {
     [SerializeField, Range(0.5f, 10f)]
     protected float disappearingDuration = 2;
@@ -18,7 +18,7 @@ public class Cage : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         Debug.Assert(boxCollider, "Cage: boxCollider component not found");
 
         sprite = GetComponent<SpriteRenderer>();
-        Debug.Assert(sprite, "Obstacle: spriteRenderer component not found");
+        Debug.Assert(sprite, "Cage: spriteRenderer component not found");
 
         vanishing = false;
     }
@@ -45,11 +45,6 @@ public class Cage : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
             }
 
         }
-    }
-
-    private void OnDisable()
-    {
-        GameManager.Instance.setMouseIcon(GameManager.MouseIcon.Default);
     }
 
 
@@ -89,14 +84,4 @@ public class Cage : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         vanishing = true;
     }
 
-
-    public void OnPointerEnter(PointerEventData eventData)
-    {
-        GameManager.Instance.setMouseIcon(GameManager.MouseIcon.Info);
-    }
-
-    public void OnPointerExit(PointerEventData eventData)
-    {
-        GameManager.Instance.setMouseIcon(GameManager.MouseIcon.Default);
-    }
 }
