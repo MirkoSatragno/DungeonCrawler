@@ -12,6 +12,7 @@ public class Obstacle : MonoBehaviour
 
     protected SpriteRenderer sprite;
     private bool vanishing;
+
     private void Awake()
     {
         sprite = GetComponent<SpriteRenderer>();

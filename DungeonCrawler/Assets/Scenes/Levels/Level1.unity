@@ -6328,7 +6328,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &740566507
 Transform:
   m_ObjectHideFlags: 0
@@ -70507,7 +70507,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4664930893690059715, guid: 36763e105e1601b4c96af79f55f2c13c, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 36763e105e1601b4c96af79f55f2c13c, type: 3}
@@ -70568,7 +70568,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4664930893690059715, guid: 36763e105e1601b4c96af79f55f2c13c, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 36763e105e1601b4c96af79f55f2c13c, type: 3}
@@ -71581,6 +71581,10 @@ PrefabInstance:
       propertyPath: bossCharacter
       value: 
       objectReference: {fileID: 548916300327392736, guid: fa32896985dd8c048b40f37d9aa84425, type: 3}
+    - target: {fileID: 3291596087395813019, guid: fc574c1a7bd2c1c45936979093343255, type: 3}
+      propertyPath: cagedCharacter
+      value: 
+      objectReference: {fileID: 662881775598659030, guid: 04ae2fd7e0942cb49b18e1762ca2dea5, type: 3}
     - target: {fileID: 3291596087395813019, guid: fc574c1a7bd2c1c45936979093343255, type: 3}
       propertyPath: enemyCharacter
       value: 

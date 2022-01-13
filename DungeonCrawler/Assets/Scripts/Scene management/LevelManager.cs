@@ -17,6 +17,8 @@ public class LevelManager : MonoBehaviour
     private PlayerCharacter playerCharacter;
     [SerializeField]
     private Vector2 startingPositionPlayer;
+    [SerializeReference]
+    private WizardPlayer cagedCharacter;
 
     static LevelManager _instance;
     static public LevelManager Instance
@@ -48,6 +50,8 @@ public class LevelManager : MonoBehaviour
 
         turnManager = GetComponent<TurnManager>();
         Debug.Assert(turnManager, "LevelManager: turnManaget component not found");
+
+        Debug.Assert(bossCharacter && playerCharacter && cagedCharacter, "LevelManager: character reference not found");
 
         friendSaved = false;
     }
@@ -116,6 +120,15 @@ public class LevelManager : MonoBehaviour
     {
         int characterId = getNewCharacterId();
         PlayerCharacter spawnedPlayer = Instantiate(playerCharacter, (Vector3)startingPositionPlayer, Quaternion.identity);
+        spawnedPlayer.CharacterId = characterId;
+        activeCharactersMap.Add(characterId, spawnedPlayer);
+        turnManager.AddToQueue(characterId);
+    }
+
+    public void InstantiateCagedPlayer(Vector3 position)
+    {
+        int characterId = getNewCharacterId();
+        WizardPlayer spawnedPlayer = Instantiate(cagedCharacter, position, Quaternion.identity);
         spawnedPlayer.CharacterId = characterId;
         activeCharactersMap.Add(characterId, spawnedPlayer);
         turnManager.AddToQueue(characterId);

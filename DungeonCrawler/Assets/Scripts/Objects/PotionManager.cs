@@ -51,6 +51,20 @@ public class PotionManager : MonoBehaviour, IBeginDragHandler, IEndDragHandler, 
         PotionFound += onPotionFound;
     }
 
+    private void Update()
+    {
+        //enable/disable flying sparkling when is flying over a player
+        if(flyingPotion != null)
+        {
+            GameObject obj = LevelManager.GetGameObjectAtLocation(flyingPotion.transform.position);
+            if (obj != null && obj.GetComponent<PlayerCharacter>() && !flyingSparkling.gameObject.activeSelf)
+                flyingSparkling.gameObject.SetActive(true);
+            else if((obj == null || !obj.GetComponent<PlayerCharacter>()) && flyingSparkling.gameObject.activeSelf)
+                flyingSparkling.gameObject.SetActive(false);
+
+        }
+    }
+
     private void OnDisable()
     {
         onEndDrag();
@@ -67,6 +81,7 @@ public class PotionManager : MonoBehaviour, IBeginDragHandler, IEndDragHandler, 
         flyingPotion.GetComponent<Canvas>().sortingLayerName = GameManager.SORTING_LAYER_NAME_UI;
         flyingSparkling = flyingPotion.transform.GetChild(0).GetComponent<Image>();
         flyingSparkling.GetComponent<Canvas>().sortingLayerName = GameManager.SORTING_LAYER_NAME_UI;
+        flyingSparkling.gameObject.SetActive(false);
         
     }
 
