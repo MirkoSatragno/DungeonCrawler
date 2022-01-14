@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 9070788960092125366}
   - component: {fileID: 9070788960092125369}
-  - component: {fileID: 4252647997343414165}
   - component: {fileID: 4822084030301001392}
+  - component: {fileID: 4252647997343414165}
   - component: {fileID: 2979922978112298509}
   - component: {fileID: 662881775598659030}
   m_Layer: 0
@@ -29,7 +29,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9070788960092125368}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.39294338, y: -2.4930382, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8587694084771936752}
@@ -89,6 +89,25 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &4822084030301001392
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9070788960092125368}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: dde7a8910cca89146b4faac16574da4d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!61 &4252647997343414165
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -115,25 +134,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!95 &4822084030301001392
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9070788960092125368}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: dde7a8910cca89146b4faac16574da4d, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!50 &2979922978112298509
 Rigidbody2D:
   serializedVersion: 4
@@ -167,13 +167,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 805ad04d775ac594d9e21a6ad9ce67d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _attackStat: 40
-  _defenseStat: 4
-  _maxStaminaStat: 10
+  _attackStat: 20
+  _defenseStat: 2
+  _maxStaminaStat: 50
   turnCircle: {fileID: 1084870469932095541}
   AttackEffect: {fileID: -772568062035337642, guid: 4cc7fd10f3a476a419a7ae438157036a, type: 3}
-  preTurnWait: 0.5
-  postTurnWait: 0.5
+  preTurnWait: 0.2
+  postTurnWait: 0.2
   disappearingDuration: 2
   boxCollider: {fileID: 0}
   movementDuration: 1

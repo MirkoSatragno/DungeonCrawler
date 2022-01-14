@@ -148,28 +148,28 @@ public class DirectionalActions : MonoBehaviour
         {
             if (actionLists[(int)Direction.up, (int)Action.Move].gameObject.activeSelf)
                 playerParent.MoveButtonPressed(Direction.up);
-            else
+            else if(actionLists[(int)Direction.up, (int)Action.Attack].gameObject.activeSelf)
                 playerParent.AttackButtonPressed(Direction.up);
         }
         if (Input.GetAxis(GameManager.AXIS_NAME_VERTICAL) < 0)
         {
             if (actionLists[(int)Direction.down, (int)Action.Move].gameObject.activeSelf)
                 playerParent.MoveButtonPressed(Direction.down);
-            else
+            else if (actionLists[(int)Direction.down, (int)Action.Attack].gameObject.activeSelf)
                 playerParent.AttackButtonPressed(Direction.down);
         }
         if (Input.GetAxis(GameManager.AXIS_NAME_HORIZONTAL) < 0)
         {
             if (actionLists[(int)Direction.left, (int)Action.Move].gameObject.activeSelf)
                 playerParent.MoveButtonPressed(Direction.left);
-            else
+            else if (actionLists[(int)Direction.left, (int)Action.Attack].gameObject.activeSelf)
                 playerParent.AttackButtonPressed(Direction.left);
         }
         if (0 < Input.GetAxis(GameManager.AXIS_NAME_HORIZONTAL))
         {
             if (actionLists[(int)Direction.right, (int)Action.Move].gameObject.activeSelf)
                 playerParent.MoveButtonPressed(Direction.right);
-            else
+            else if (actionLists[(int)Direction.right, (int)Action.Attack].gameObject.activeSelf)
                 playerParent.AttackButtonPressed(Direction.right);
         }
     }

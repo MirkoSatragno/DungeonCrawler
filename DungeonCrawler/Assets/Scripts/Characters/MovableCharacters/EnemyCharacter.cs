@@ -5,9 +5,9 @@ using UnityEngine;
 
 public class EnemyCharacter : MovableCharacter
 {
-    [SerializeField]
+    [SerializeField, Range(1, 100)]
     private float maxStartHuntingRadius = 30;
-    [SerializeField]
+    [SerializeField, Range(1, 100)]
     private int maxPredictedWalkCost = 10;
     
 
@@ -30,7 +30,7 @@ public class EnemyCharacter : MovableCharacter
             sprite.color = spriteColor;
 
             if (spriteColor.a == 0)
-                Destroy(gameObject);
+                Die();
 
         }
     }

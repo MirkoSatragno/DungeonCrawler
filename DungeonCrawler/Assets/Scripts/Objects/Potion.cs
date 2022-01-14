@@ -5,6 +5,13 @@ using UnityEngine;
 public class Potion : Item
 {
     [SerializeField]
-    public static int healingAmount = 20;
+    private int _healingAmount = 20;
+    public static int HealingAmount;
+    
+
+    private void Awake()
+    {
+        HealingAmount = _healingAmount;
+    }
 
 }

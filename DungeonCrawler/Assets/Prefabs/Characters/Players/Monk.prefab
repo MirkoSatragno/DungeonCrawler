@@ -29,7 +29,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5071695686014323211}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.5, y: -1.5, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5525420449541737283}
@@ -127,13 +127,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b684532f45a25a34fab77be2a7f50027, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _attackStat: 4
-  _defenseStat: 4
-  _maxStaminaStat: 10
+  _attackStat: 10
+  _defenseStat: 2
+  _maxStaminaStat: 20
   turnCircle: {fileID: 3786851272465689222}
   AttackEffect: {fileID: -772568062035337642, guid: 4cc7fd10f3a476a419a7ae438157036a, type: 3}
-  preTurnWait: 1
-  postTurnWait: 1
+  preTurnWait: 0.2
+  postTurnWait: 0.2
   disappearingDuration: 2
   boxCollider: {fileID: 0}
   movementDuration: 1

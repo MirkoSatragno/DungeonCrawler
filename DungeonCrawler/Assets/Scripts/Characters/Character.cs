@@ -4,19 +4,19 @@ using UnityEngine;
 
 public class Character : MonoBehaviour
 {
-    [SerializeField]
+    [SerializeField, Range(0, 100)]
     private int _attackStat=5;
     public int AttackStat
     {
         get { return _attackStat; }
     }
-    [SerializeField]
+    [SerializeField, Range(0, 100)]
     private int _defenseStat;
     public int DefenseStat
     {
         get { return _defenseStat; }
     }
-    [SerializeField]
+    [SerializeField, Range(0, 1000)]
     private int _maxStaminaStat;
     public int MaxStaminaStat
     {
@@ -28,9 +28,9 @@ public class Character : MonoBehaviour
     [SerializeReference]
     protected SpecialEffect AttackEffect;
 
-    [SerializeField, Range(0.5f, 10f)]
+    [SerializeField, Range(0.2f, 10f)]
     protected float preTurnWait = 1f;
-    [SerializeField, Range(0.5f, 10f)]
+    [SerializeField, Range(0.2f, 10f)]
     protected float postTurnWait = 1f;
     [SerializeField, Range(0.5f, 10f)]
     public float disappearingDuration = 2;
@@ -157,7 +157,7 @@ public class Character : MonoBehaviour
         healthBar.SetHealthBar((float)stamina / (float)MaxStaminaStat);
 
         if (Stamina == 0)
-            Die();
+            StartDieing();
     }
 
     protected bool IsMyTurn()
@@ -250,10 +250,14 @@ public class Character : MonoBehaviour
         CurrentState = CharacterState.Spectating;
     }
 
-    virtual protected void Die()
+    protected void StartDieing()
     {
         CurrentState = CharacterState.Dieing;
+    }
 
+    virtual protected void Die()
+    {
+        Destroy(gameObject);
         LevelManager.Instance.RemoveCharacter(CharacterId);
     }
 }

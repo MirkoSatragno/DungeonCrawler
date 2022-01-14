@@ -101,14 +101,18 @@ public class EnemySpawn : MonoBehaviour
                     return true;
                 return false; });
 
-            if (!LevelManager.Instance.friendSaved || Random.Range(0, 1) < 0.5)
+            
+            if (!LevelManager.Instance.friendSaved || Random.Range(0f, 1f) < 0.5)
             {
                 if (Random.Range(0f, 1f) < weakEnemySpawnRate)
                     InstantiateEnemy(weakEnemy);
             }
             else
+            {
                 if (Random.Range(0f, 1f) < strongEnemySpawnRate)
                     InstantiateEnemy(strongEnemy);
+            }
+                
 
             yield return new WaitForSeconds(SPAWN_CYCLE_DURATION);
         }

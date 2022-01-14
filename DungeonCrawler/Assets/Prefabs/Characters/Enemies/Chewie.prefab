@@ -99,14 +99,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 038f14e0817b6af49a483fd9ffc72342, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _attackStat: 5
+  _attackStat: 8
   _defenseStat: 5
-  _maxStaminaStat: 10
+  _maxStaminaStat: 40
   turnCircle: {fileID: 3247952378604209607}
   AttackEffect: {fileID: -772568062035337642, guid: 4cc7fd10f3a476a419a7ae438157036a, type: 3}
   preTurnWait: 1
   postTurnWait: 1
   disappearingDuration: 2
+  boxCollider: {fileID: 0}
 --- !u!61 &2398014530770058337
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -61,7 +61,7 @@ public class PlayerCharacter : MovableCharacter
             sprite.color = spriteColor;
 
             if (spriteColor.a == 0)
-                Destroy(gameObject);
+                Die();
                 
         }
     }
@@ -215,7 +215,7 @@ public class PlayerCharacter : MovableCharacter
 
     public void ReceivedPotion()
     {
-        SetStamina(Mathf.Min(MaxStaminaStat, Stamina + Potion.healingAmount));
+        SetStamina(Mathf.Min(MaxStaminaStat, Stamina + Potion.HealingAmount));
     }
 
     public void onUseItem(int characterId)

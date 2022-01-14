@@ -35,6 +35,7 @@ public class LevelManager : MonoBehaviour
     private int nextCharacterID;
     private Hashtable activeCharactersMap;
     public bool friendSaved;
+    private int playersAlive;
 
     [HideInInspector]
     public TurnManager turnManager;
@@ -54,6 +55,7 @@ public class LevelManager : MonoBehaviour
         Debug.Assert(bossCharacter && playerCharacter && cagedCharacter, "LevelManager: character reference not found");
 
         friendSaved = false;
+        playersAlive = 0;
     }
 
     void OnEnable()
@@ -123,6 +125,8 @@ public class LevelManager : MonoBehaviour
         spawnedPlayer.CharacterId = characterId;
         activeCharactersMap.Add(characterId, spawnedPlayer);
         turnManager.AddToQueue(characterId);
+
+        playersAlive++;
     }
 
     public void InstantiateCagedPlayer(Vector3 position)
@@ -132,6 +136,9 @@ public class LevelManager : MonoBehaviour
         spawnedPlayer.CharacterId = characterId;
         activeCharactersMap.Add(characterId, spawnedPlayer);
         turnManager.AddToQueue(characterId);
+
+        playersAlive++;
+        friendSaved = true;
     }
 
 
@@ -147,6 +154,15 @@ public class LevelManager : MonoBehaviour
     public void RemoveCharacter(int characterId)
     {
         Debug.Assert(activeCharactersMap.ContainsKey(characterId), "LevelManager: character to be removed not found");
+
+        if (((Character)activeCharactersMap[characterId]).CompareTag(GameManager.TAG_PLAYER))
+        {
+            playersAlive--;
+            if (playersAlive == 0)
+                PauseManager.EndGame(false);
+        }
+
+
 
         activeCharactersMap.Remove(characterId);
         //can't remove from turnQueue because it's not random access

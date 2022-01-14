@@ -15,7 +15,8 @@ public class UnmovableCharacter : Character
             sprite.color = spriteColor;
 
             if (spriteColor.a == 0)
-                Destroy(gameObject);
+                Die();
+                
 
         }
     }
@@ -50,10 +51,15 @@ public class UnmovableCharacter : Character
         }
         
 
-        
-
-
         DisableTurnUI();
         TurnManager.EndTurn(CharacterId);
     }
+
+    protected override void Die()
+    {
+        base.Die();
+
+        PauseManager.EndGame(true);
+    }
+
 }
