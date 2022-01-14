@@ -215,7 +215,10 @@ public class PlayerCharacter : MovableCharacter
 
     public void ReceivedPotion()
     {
+        Debug.Log(Potion.HealingAmount);
+        Debug.Log(Stamina);
         SetStamina(Mathf.Min(MaxStaminaStat, Stamina + Potion.HealingAmount));
+        Debug.Log(Stamina);
     }
 
     public void onUseItem(int characterId)

@@ -53,6 +53,7 @@ public class PauseManager : MonoBehaviour
     public void onPauseButtonPressed()
     {
         pauseCanvas.SetActive(true);
+        Debug.Log("Hello");
         GameManager.Instance.SetGamePaused(true);
     }
 

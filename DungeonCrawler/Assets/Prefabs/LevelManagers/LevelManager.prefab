@@ -50,6 +50,7 @@ MonoBehaviour:
   startingPositionBoss: {x: 0, y: 0}
   playerCharacter: {fileID: 0}
   startingPositionPlayer: {x: 0, y: 0}
+  cagedCharacter: {fileID: 0}
   friendSaved: 0
   turnManager: {fileID: 3291596087395813022}
 --- !u!114 &3291596087395813017
@@ -64,7 +65,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f037780b0566c864397fcd673c164e8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pauseCanvas: {fileID: 627778566285915108, guid: 12caa2b44db7b944096b244f8444f7cd, type: 3}
+  pauseCanvas: {fileID: 0}
+  endGameCanvas: {fileID: 0}
+  victoryImage: {fileID: 0}
+  lossImage: {fileID: 0}
 --- !u!114 &3291596087395813022
 MonoBehaviour:
   m_ObjectHideFlags: 0

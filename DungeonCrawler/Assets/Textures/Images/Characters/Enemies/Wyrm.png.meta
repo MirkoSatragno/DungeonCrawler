@@ -1,7 +1,295 @@
 fileFormatVersion: 2
 guid: 5c6707d4609eec34f9049e25ad77a5dc
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 8788433452045232313
+    second: Wyrm_0
+  - first:
+      213: 69037857413597578
+    second: Wyrm_1
+  - first:
+      213: -8480340297328697748
+    second: Wyrm_2
+  - first:
+      213: 7491734866698226866
+    second: Wyrm_3
+  - first:
+      213: -6013532297245940058
+    second: Wyrm_4
+  - first:
+      213: -343943587306354172
+    second: Wyrm_5
+  - first:
+      213: 8920142663349391318
+    second: Wyrm_6
+  - first:
+      213: 9169349311766432857
+    second: Wyrm_7
+  - first:
+      213: 1974947172985460939
+    second: Wyrm_8
+  - first:
+      213: 1955262429068585452
+    second: Wyrm_9
+  - first:
+      213: -2382256864762655274
+    second: Wyrm_10
+  - first:
+      213: 1941403820722494871
+    second: Wyrm_11
+  - first:
+      213: 2803019243289762812
+    second: Wyrm_12
+  - first:
+      213: -581858747839387284
+    second: Wyrm_13
+  - first:
+      213: -1012774342350200538
+    second: Wyrm_14
+  - first:
+      213: 5281746373823248706
+    second: Wyrm_15
+  - first:
+      213: 412512523445335275
+    second: Wyrm_16
+  - first:
+      213: 5457017492214417133
+    second: Wyrm_17
+  - first:
+      213: 5559337831441097909
+    second: Wyrm_18
+  - first:
+      213: -8382112635366542405
+    second: Wyrm_19
+  - first:
+      213: 6542459463479384359
+    second: Wyrm_20
+  - first:
+      213: -5473643486334317454
+    second: Wyrm_21
+  - first:
+      213: -6539784990107863233
+    second: Wyrm_22
+  - first:
+      213: 6567251183372891315
+    second: Wyrm_23
+  - first:
+      213: 3640344027843133701
+    second: Wyrm_24
+  - first:
+      213: 8965313885048105902
+    second: Wyrm_25
+  - first:
+      213: 5262124053832205684
+    second: Wyrm_26
+  - first:
+      213: -355992074429129123
+    second: Wyrm_27
+  - first:
+      213: -7910297192549249411
+    second: Wyrm_28
+  - first:
+      213: 4825869865631827704
+    second: Wyrm_29
+  - first:
+      213: -2987313940206799912
+    second: Wyrm_30
+  - first:
+      213: 895969448917491204
+    second: Wyrm_31
+  - first:
+      213: 8029383662026803247
+    second: Wyrm_32
+  - first:
+      213: 2401541885965591641
+    second: Wyrm_33
+  - first:
+      213: -2927639161614242473
+    second: Wyrm_34
+  - first:
+      213: -4372377304491478282
+    second: Wyrm_35
+  - first:
+      213: 5938870168791631675
+    second: Wyrm_36
+  - first:
+      213: 323090322972545097
+    second: Wyrm_37
+  - first:
+      213: 5419251430095790960
+    second: Wyrm_38
+  - first:
+      213: 621751144357942774
+    second: Wyrm_39
+  - first:
+      213: 916468018457874517
+    second: Wyrm_40
+  - first:
+      213: -3651300025890789212
+    second: Wyrm_41
+  - first:
+      213: 8535529402581664613
+    second: Wyrm_42
+  - first:
+      213: 1408713650461258314
+    second: Wyrm_43
+  - first:
+      213: -1891530102419082315
+    second: Wyrm_44
+  - first:
+      213: 2809314123818393264
+    second: Wyrm_45
+  - first:
+      213: -2471194153133079848
+    second: Wyrm_46
+  - first:
+      213: -1197581484149554049
+    second: Wyrm_47
+  - first:
+      213: -2911839570199523631
+    second: Wyrm_48
+  - first:
+      213: 79555135493510297
+    second: Wyrm_49
+  - first:
+      213: 2039238788763872544
+    second: Wyrm_50
+  - first:
+      213: -1949309151600245139
+    second: Wyrm_51
+  - first:
+      213: -1972523196701628508
+    second: Wyrm_52
+  - first:
+      213: -3956908432141248755
+    second: Wyrm_53
+  - first:
+      213: 6309948239978306884
+    second: Wyrm_54
+  - first:
+      213: -6212799192787315436
+    second: Wyrm_55
+  - first:
+      213: 1480740717675256859
+    second: Wyrm_56
+  - first:
+      213: 2236643255825003982
+    second: Wyrm_57
+  - first:
+      213: -4759504380916662443
+    second: Wyrm_58
+  - first:
+      213: -8968296565233010189
+    second: Wyrm_59
+  - first:
+      213: 3113033411019104384
+    second: Wyrm_60
+  - first:
+      213: -3755492164730709701
+    second: Wyrm_61
+  - first:
+      213: 2107638374411617512
+    second: Wyrm_62
+  - first:
+      213: -7337571377934584881
+    second: Wyrm_63
+  - first:
+      213: 7961336345653559891
+    second: Wyrm_64
+  - first:
+      213: -5118702022989874520
+    second: Wyrm_65
+  - first:
+      213: 807246979656588567
+    second: Wyrm_66
+  - first:
+      213: 4004751081117774751
+    second: Wyrm_67
+  - first:
+      213: -1416969511236445961
+    second: Wyrm_68
+  - first:
+      213: -4176774479224020730
+    second: Wyrm_69
+  - first:
+      213: 8310599606697468066
+    second: Wyrm_70
+  - first:
+      213: 2889387393006330748
+    second: Wyrm_71
+  - first:
+      213: 5768791165957448319
+    second: Wyrm_72
+  - first:
+      213: -289920531162200416
+    second: Wyrm_73
+  - first:
+      213: -8159306519855611757
+    second: Wyrm_74
+  - first:
+      213: 2773424764692081380
+    second: Wyrm_75
+  - first:
+      213: 6945551320433044155
+    second: Wyrm_76
+  - first:
+      213: 6653111853984587771
+    second: Wyrm_77
+  - first:
+      213: -7519818155673735992
+    second: Wyrm_78
+  - first:
+      213: 4707544742237964504
+    second: Wyrm_79
+  - first:
+      213: -8027274235814011048
+    second: Wyrm_80
+  - first:
+      213: -1259328641317427904
+    second: Wyrm_81
+  - first:
+      213: -4683841924305607831
+    second: Wyrm_82
+  - first:
+      213: -8047498117355931490
+    second: Wyrm_83
+  - first:
+      213: -6586399785451729697
+    second: Wyrm_84
+  - first:
+      213: -610579561394522557
+    second: Wyrm_85
+  - first:
+      213: -170395509369554969
+    second: Wyrm_86
+  - first:
+      213: -8252598184936274562
+    second: Wyrm_87
+  - first:
+      213: 1955267058866676902
+    second: Wyrm_88
+  - first:
+      213: -7113655855702263568
+    second: Wyrm_89
+  - first:
+      213: -640310503424070259
+    second: Wyrm_90
+  - first:
+      213: -8933137952042910599
+    second: Wyrm_91
+  - first:
+      213: -486650123821285751
+    second: Wyrm_92
+  - first:
+      213: 5600747049125561184
+    second: Wyrm_93
+  - first:
+      213: 4690589065390473281
+    second: Wyrm_94
+  - first:
+      213: 7827933325954187859
+    second: Wyrm_95
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -89,7 +377,259 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Wyrm_6
+      rect:
+        serializedVersion: 2
+        x: 193
+        y: 224
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6df4fbacd76bacb70800000000000000
+      internalID: 8920142663349391318
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wyrm_7
+      rect:
+        serializedVersion: 2
+        x: 225
+        y: 224
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 95c8f452e92104f70800000000000000
+      internalID: 9169349311766432857
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wyrm_8
+      rect:
+        serializedVersion: 2
+        x: 257
+        y: 224
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bc8d5f77dfb686b10800000000000000
+      internalID: 1974947172985460939
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wyrm_18
+      rect:
+        serializedVersion: 2
+        x: 193
+        y: 192
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5b4ef659d4cb62d40800000000000000
+      internalID: 5559337831441097909
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wyrm_19
+      rect:
+        serializedVersion: 2
+        x: 225
+        y: 192
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bb3f9ade7f0ccab80800000000000000
+      internalID: -8382112635366542405
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wyrm_20
+      rect:
+        serializedVersion: 2
+        x: 257
+        y: 192
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 729d416f73c7bca50800000000000000
+      internalID: 6542459463479384359
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wyrm_30
+      rect:
+        serializedVersion: 2
+        x: 193
+        y: 160
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8d3b6618ccdea86d0800000000000000
+      internalID: -2987313940206799912
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wyrm_31
+      rect:
+        serializedVersion: 2
+        x: 225
+        y: 160
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 40e545c777f1f6c00800000000000000
+      internalID: 895969448917491204
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wyrm_32
+      rect:
+        serializedVersion: 2
+        x: 257
+        y: 160
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f28ce6c26e91e6f60800000000000000
+      internalID: 8029383662026803247
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wyrm_42
+      rect:
+        serializedVersion: 2
+        x: 193
+        y: 128
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 56348cab4ca447670800000000000000
+      internalID: 8535529402581664613
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wyrm_43
+      rect:
+        serializedVersion: 2
+        x: 225
+        y: 128
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a42bcf5f991cc8310800000000000000
+      internalID: 1408713650461258314
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wyrm_44
+      rect:
+        serializedVersion: 2
+        x: 257
+        y: 128
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5b33a53c46fefb5e0800000000000000
+      internalID: -1891530102419082315
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []

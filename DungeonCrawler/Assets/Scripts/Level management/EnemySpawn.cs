@@ -20,8 +20,6 @@ public class EnemySpawn : MonoBehaviour
 
     private const int SPAWN_CYCLE_DURATION = 20;
     private int roomWidth, roomHeight;
-    //serialization is for debug only
-    [SerializeField]
     private int playersInRoomCount;
     private BoxCollider2D boxCollider;
 

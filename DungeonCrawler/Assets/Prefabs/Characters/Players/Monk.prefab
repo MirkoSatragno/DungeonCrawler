@@ -131,9 +131,9 @@ MonoBehaviour:
   _defenseStat: 2
   _maxStaminaStat: 20
   turnCircle: {fileID: 3786851272465689222}
-  AttackEffect: {fileID: -772568062035337642, guid: 4cc7fd10f3a476a419a7ae438157036a, type: 3}
-  preTurnWait: 0.2
-  postTurnWait: 0.2
+  AttackEffect: {fileID: 7476275476574376738, guid: 254d71fa92a964e489ebb6975e463dcb, type: 3}
+  preTurnWait: 0.3
+  postTurnWait: 0.3
   disappearingDuration: 2
   boxCollider: {fileID: 0}
   movementDuration: 1
