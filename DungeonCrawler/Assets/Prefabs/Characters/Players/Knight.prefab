@@ -8,6 +8,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 662881775598659030, guid: 04ae2fd7e0942cb49b18e1762ca2dea5, type: 3}
+      propertyPath: turnCanvas
+      value: 
+      objectReference: {fileID: 1242430277612441826, guid: c1534331965d1a34c81707933d6ef815, type: 3}
+    - target: {fileID: 662881775598659030, guid: 04ae2fd7e0942cb49b18e1762ca2dea5, type: 3}
       propertyPath: AttackEffect
       value: 
       objectReference: {fileID: 2902636516486281333, guid: 21726e30e15333041986237f7c280a87, type: 3}
