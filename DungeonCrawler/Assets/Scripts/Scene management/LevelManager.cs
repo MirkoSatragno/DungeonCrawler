@@ -20,6 +20,9 @@ public class LevelManager : MonoBehaviour
     [SerializeReference]
     private WizardPlayer cagedCharacter;
 
+    [SerializeField]
+    public int maxCharactersPerDungeon = 20;
+
     static LevelManager _instance;
     static public LevelManager Instance
     {
@@ -34,8 +37,10 @@ public class LevelManager : MonoBehaviour
 
     private int nextCharacterID;
     private Hashtable activeCharactersMap;
-    public bool friendSaved;
     private int playersAlive;
+    [HideInInspector]
+    public bool friendSaved;
+    
 
     [HideInInspector]
     public TurnManager turnManager;

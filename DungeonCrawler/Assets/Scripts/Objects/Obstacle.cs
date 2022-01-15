@@ -54,5 +54,6 @@ public class Obstacle : MonoBehaviour
     private void onRemoveObstacle()
     {
         vanishing = true;
+        GetComponent<AudioSource>().Play();
     }
 }

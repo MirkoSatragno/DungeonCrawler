@@ -109,8 +109,8 @@ MonoBehaviour:
   disappearingDuration: 2
   boxCollider: {fileID: 0}
   movementDuration: 1
-  maxStartHuntingRadius: 10
-  maxPredictedWalkCost: 15
+  maxStartHuntingRadius: 15
+  maxPredictedWalkCost: 20
 --- !u!61 &4188228449411800777
 BoxCollider2D:
   m_ObjectHideFlags: 0

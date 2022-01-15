@@ -51,9 +51,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1420115948532613449, guid: be4f9c8d95efc7e41ab8e0f8b88aa060, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 59f143240554cd04ba28b32cb510866a, type: 2}
+    - target: {fileID: 1424363966304808413, guid: be4f9c8d95efc7e41ab8e0f8b88aa060, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 8480205167599975839, guid: d8bd7e2015a4baa4899ee2d59d7b4a50, type: 3}
+    - target: {fileID: 5569155017946812377, guid: be4f9c8d95efc7e41ab8e0f8b88aa060, type: 3}
+      propertyPath: m_Name
+      value: Knight
+      objectReference: {fileID: 0}
     - target: {fileID: 7308720002205977148, guid: be4f9c8d95efc7e41ab8e0f8b88aa060, type: 3}
       propertyPath: m_Name
-      value: Cage
+      value: Cage - Forest
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: be4f9c8d95efc7e41ab8e0f8b88aa060, type: 3}

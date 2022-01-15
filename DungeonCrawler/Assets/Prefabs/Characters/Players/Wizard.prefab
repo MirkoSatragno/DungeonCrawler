@@ -169,7 +169,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _attackStat: 20
   _defenseStat: 2
-  _maxStaminaStat: 50
+  _maxStaminaStat: 40
   turnCircle: {fileID: 1084870469932095541}
   AttackEffect: {fileID: 1801632042317296621, guid: 5417f6afe785d754d93ee64be76a028f, type: 3}
   preTurnWait: 0.3

@@ -24,7 +24,6 @@ public class MainMenu : MonoBehaviour
 
     public void onLevel2ButtonPushed()
     {
-        Debug.Log("Button 2");
         SceneManager.LoadScene(GameManager.LEVEL_NAME_LEVEL_2);
     }
 

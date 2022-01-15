@@ -15,10 +15,9 @@ public class EnemySpawn : MonoBehaviour
 
     [SerializeReference]
     private SpecialEffect spawnEffect;
-    [SerializeField]
-    private int maxCharacterPerDungeon = 20;
+    
 
-    private const int SPAWN_CYCLE_DURATION = 20;
+    private const int SPAWN_CYCLE_DURATION = 10;
     private int roomWidth, roomHeight;
     private int playersInRoomCount;
     private BoxCollider2D boxCollider;
@@ -93,7 +92,7 @@ public class EnemySpawn : MonoBehaviour
             yield return new WaitWhile(() => {
                 if (currentCharacter.CurrentState == Character.CharacterState.Moving)
                     return true;
-                if (maxCharacterPerDungeon < LevelManager.Instance.charactersNumberInDungeon())
+                if (LevelManager.Instance.maxCharactersPerDungeon < LevelManager.Instance.charactersNumberInDungeon())
                     return true;
                 if (playersInRoomCount == 0)
                     return true;

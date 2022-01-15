@@ -55,6 +55,18 @@ PrefabInstance:
       propertyPath: weakEnemy
       value: 
       objectReference: {fileID: 4041184138230936708, guid: 9661dd610b17a1b4ab7a51df7274510b, type: 3}
+    - target: {fileID: 4664930893690059713, guid: 36763e105e1601b4c96af79f55f2c13c, type: 3}
+      propertyPath: strongEnemy
+      value: 
+      objectReference: {fileID: 4549656712713202287, guid: ae8b3d36fbfb3ab4eab7a0279a532b22, type: 3}
+    - target: {fileID: 4664930893690059713, guid: 36763e105e1601b4c96af79f55f2c13c, type: 3}
+      propertyPath: weakEnemySpawnRate
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4664930893690059713, guid: 36763e105e1601b4c96af79f55f2c13c, type: 3}
+      propertyPath: strongEnemySpawnRate
+      value: 0.15
+      objectReference: {fileID: 0}
     - target: {fileID: 4664930893690059715, guid: 36763e105e1601b4c96af79f55f2c13c, type: 3}
       propertyPath: m_Name
       value: EnemySpawner - Forest
