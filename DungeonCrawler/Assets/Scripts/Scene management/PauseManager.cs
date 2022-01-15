@@ -12,13 +12,13 @@ public class PauseManager : MonoBehaviour
     public delegate void EndGameDelegate(bool victory);
     public static EndGameDelegate EndGame;
 
-    [SerializeReference]
+    [SerializeReference, Tooltip("Canvas displayed during pause")]
     private GameObject pauseCanvas;
-    [SerializeReference]
+    [SerializeReference, Tooltip("Canvas displayed when game ends")]
     private GameObject endGameCanvas;
-    [SerializeReference]
+    [SerializeReference, Tooltip("Victory image displayed in endCanvas")]
     private Image victoryImage;
-    [SerializeReference]
+    [SerializeReference, Tooltip("Losss image displayed in endCanvas")]
     private Image lossImage;
 
     private void Awake()
@@ -53,7 +53,6 @@ public class PauseManager : MonoBehaviour
     public void onPauseButtonPressed()
     {
         pauseCanvas.SetActive(true);
-        Debug.Log("Hello");
         GameManager.Instance.SetGamePaused(true);
     }
 

@@ -5,22 +5,23 @@ using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
-    
-    [SerializeField]
+    [SerializeField, Tooltip("Reference grid of the game")]
     private Grid mainGrid;
     
-    [SerializeReference]
+    [SerializeReference, Tooltip("Enemy boss of the dungeon")]
     private UnmovableCharacter bossCharacter;
     [SerializeField]
     private Vector2 startingPositionBoss;
-    [SerializeReference]
+    [SerializeReference, Tooltip("Starting player character")]
     private PlayerCharacter playerCharacter;
     [SerializeField]
     private Vector2 startingPositionPlayer;
-    [SerializeReference]
-    private WizardPlayer cagedCharacter;
+    [SerializeReference, Tooltip("Player character to be rescued")]
+    private SkilledPlayer cagedCharacter;
 
-    [SerializeField]
+    [Space(20)]
+
+    [SerializeField, Range(5, 50), Tooltip("Maximum number of characters simultaneously allowed in the dungeon")]
     public int maxCharactersPerDungeon = 20;
 
     static LevelManager _instance;
@@ -137,7 +138,7 @@ public class LevelManager : MonoBehaviour
     public void InstantiateCagedPlayer(Vector3 position)
     {
         int characterId = getNewCharacterId();
-        WizardPlayer spawnedPlayer = Instantiate(cagedCharacter, position, Quaternion.identity);
+        SkilledPlayer spawnedPlayer = Instantiate(cagedCharacter, position, Quaternion.identity);
         spawnedPlayer.CharacterId = characterId;
         activeCharactersMap.Add(characterId, spawnedPlayer);
         turnManager.AddToQueue(characterId);

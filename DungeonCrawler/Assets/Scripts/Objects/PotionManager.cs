@@ -6,12 +6,12 @@ using UnityEngine.EventSystems;
 
 public class PotionManager : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler, IPointerEnterHandler, IPointerExitHandler
 {
-    [SerializeReference]
+    [SerializeReference, Tooltip("Image for UI potion icon")]
     private Image potionImage;
-    [SerializeReference]
-    private SpecialEffect redSparkling;
-    [SerializeReference]
+    [SerializeReference, Tooltip("Visual effect applied behind potion image")]
     private Image loopingRedSparkling;
+    [SerializeReference, Tooltip("Visual effect applied to characters")]
+    private SpecialEffect redSparkling;
 
     public delegate void PotionFoundDelegate();
     public static PotionFoundDelegate PotionFound;

@@ -36,7 +36,7 @@ public class Obstacle : MonoBehaviour
 
             if (spriteColor.a == 0)
             {
-                WizardPlayer.EndPower();
+                SkilledPlayer.EndPower();
                 Destroy(gameObject);
             }
                 

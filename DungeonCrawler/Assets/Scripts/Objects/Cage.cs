@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 
 public class Cage : MonoBehaviour
 {
-    [SerializeField, Range(0.5f, 10f)]
+    [SerializeField, Range(0.5f, 10f), Tooltip("Seconds duration of vanishing effect")]
     protected float disappearingDuration = 2;
 
     protected SpriteRenderer sprite;

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MovableCharacter : Character
 {
-    [SerializeField]
+    [SerializeField, Range(0.1f, 10f), Tooltip("Movement duration in seconds")]
     protected float movementDuration = 1f;
 
     protected Vector3 movementDestination;

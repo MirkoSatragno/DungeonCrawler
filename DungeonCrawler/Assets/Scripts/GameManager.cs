@@ -10,11 +10,11 @@ public class GameManager : MonoBehaviour
         get { return _instance; }
     }
 
-    [SerializeReference]
+    [SerializeReference, Tooltip("Default cursor icon")]
     private Texture2D defaultMouseIcon;
-    [SerializeReference]
+    [SerializeReference, Tooltip("Cursor icon used for drag and drop selections")]
     private Texture2D selectableMouseIcon;
-    [SerializeReference]
+    [SerializeReference, Tooltip("Cursor icon used when hovering on PopUp-enabled objects")]
     private Texture2D infoMouseIcon;
 
     [HideInInspector]

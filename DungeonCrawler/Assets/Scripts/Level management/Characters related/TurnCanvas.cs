@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TurnCanvas : MonoBehaviour
 {
-    [SerializeReference]
+    [SerializeReference, Tooltip("Canvas containing turnCanvas buttons")]
     private Canvas buttonsCanvas;
 
     private void Awake()

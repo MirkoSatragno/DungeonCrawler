@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerCharacter : MovableCharacter
 {
-    [SerializeField, Tooltip("Starting main character")]
+    [SerializeField, Tooltip("Canvas showed during player's turn")]
     protected TurnCanvas turnCanvas;
 
     protected TurnCanvas playerTurnCanvas;

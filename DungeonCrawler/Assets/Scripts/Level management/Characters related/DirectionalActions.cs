@@ -12,6 +12,9 @@ public class DirectionalActions : MonoBehaviour
     private GameObject topArrow;
     [SerializeReference]
     private GameObject downArrow;
+
+    [Space(10)]
+
     [SerializeReference]
     private GameObject leftAttack;
     [SerializeReference]
@@ -20,6 +23,9 @@ public class DirectionalActions : MonoBehaviour
     private GameObject topAttack;
     [SerializeReference]
     private GameObject downAttack;
+
+    [Space(10)]
+
     [SerializeReference]
     private GameObject sleep;
 

@@ -5,9 +5,9 @@ using UnityEngine;
 
 public class EnemyCharacter : MovableCharacter
 {
-    [SerializeField, Range(1, 100)]
+    [SerializeField, Range(1, 100), Tooltip("Radius within wihch players are detected")]
     private float maxStartHuntingRadius = 30;
-    [SerializeField, Range(1, 100)]
+    [SerializeField, Range(1, 100), Tooltip("Maximum steps for trying to reach a player")]
     private int maxPredictedWalkCost = 10;
     
 
@@ -172,7 +172,7 @@ public class EnemyCharacter : MovableCharacter
 
             index = (index + 1) % directions.Length;
         }
-        Debug.Log("Can't move");
+        
         return false;
     }
 
@@ -185,7 +185,7 @@ public class EnemyCharacter : MovableCharacter
 
 
 
-
+//"Djik" stands for Djikstra
 public class DjikNode : System.IComparable<DjikNode>
 {
     public Vector2 position;

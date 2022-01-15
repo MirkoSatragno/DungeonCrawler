@@ -4,16 +4,16 @@ using UnityEngine;
 
 public class EnemySpawn : MonoBehaviour
 {
-    [SerializeReference]
+    [SerializeReference, Tooltip("Weak enemy for spawning")]
     private EnemyCharacter weakEnemy;
-    [SerializeReference]
+    [SerializeReference, Tooltip("Strong enemy for spawning")]
     private EnemyCharacter strongEnemy;
     [SerializeField, Range(0.0f, 1.0f)]
     private float weakEnemySpawnRate;
     [SerializeField, Range(0.0f, 1.0f)]
     private float strongEnemySpawnRate;
 
-    [SerializeReference]
+    [SerializeReference, Tooltip("Special effect whhen spawning an enemy")]
     private SpecialEffect spawnEffect;
     
 

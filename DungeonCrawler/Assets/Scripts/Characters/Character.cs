@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Character : MonoBehaviour
 {
+    [Header("Stats")]
     [SerializeField, Range(0, 100)]
     private int _attackStat=5;
     public int AttackStat
@@ -23,16 +24,19 @@ public class Character : MonoBehaviour
         get { return _maxStaminaStat; }
     }
 
-    [SerializeReference]
+    [Space(20)]
+
+
+    [SerializeReference, Tooltip("Animation under the player during his turn")]
     protected GameObject turnCircle;
-    [SerializeReference]
+    [SerializeReference, Tooltip("Special effect showed while attacking")]
     protected SpecialEffect AttackEffect;
 
-    [SerializeField, Range(0.2f, 10f)]
+    [SerializeField, Range(0.2f, 10f), Tooltip("Seconds waited before starting the turn")]
     protected float preTurnWait = 1f;
-    [SerializeField, Range(0.2f, 10f)]
+    [SerializeField, Range(0.2f, 10f), Tooltip("Seconds waited before ending the turn")]
     protected float postTurnWait = 1f;
-    [SerializeField, Range(0.5f, 10f)]
+    [SerializeField, Range(0.5f, 10f), Tooltip("Seconds duration of vanisging animation when killed")]
     public float disappearingDuration = 2;
 
     protected const string ANIMATOR_PARAMETER_SPEED_NAME = "Speed";
@@ -88,9 +92,7 @@ public class Character : MonoBehaviour
     public CharacterState CurrentState
     {
         get { return _currentState; }
-        set { _currentState = value;
-            //Debug.Log("Now I'm" + value);
-        }
+        set { _currentState = value; }
     }
 
     protected Character attackedCharacter;

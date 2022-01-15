@@ -5,14 +5,14 @@ using UnityEngine.UI;
 
 public class SpecialPowerManager : MonoBehaviour
 {
-    [SerializeReference]
+    [SerializeReference, Tooltip("Special power button in enabled state")]
     private Button enabledPowerButton;
-    [SerializeReference]
+    [SerializeReference, Tooltip("Special power button in disabled state")]
     private Button disabledPowerButton;
 
     private void Awake()
     {
-        Debug.Assert(enabledPowerButton && disabledPowerButton, "SpecialPower: button reference not found");
+        Debug.Assert(enabledPowerButton && disabledPowerButton, "SpecialPowerManager: button reference not found");
 
         enabledPowerButton.gameObject.SetActive(false);
         disabledPowerButton.gameObject.SetActive(true);
