@@ -72286,6 +72286,10 @@ PrefabInstance:
       value: -10
       objectReference: {fileID: 0}
     - target: {fileID: 3291596087395813019, guid: fc574c1a7bd2c1c45936979093343255, type: 3}
+      propertyPath: maxCharactersPerDungeon
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 3291596087395813019, guid: fc574c1a7bd2c1c45936979093343255, type: 3}
       propertyPath: startingPositionPlayer.x
       value: 0.5
       objectReference: {fileID: 0}
